@@ -23,7 +23,6 @@
                 <link href="@Html.Raw(fontLink)" rel="stylesheet" data-no-mirror>
             }
         }
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.26.0/themes/prism.css">
         <link href="@Context.GetLink("/assets/css/theme.css")" rel="stylesheet" />
         <link href="@Context.GetLink("/assets/css/styles.css")" rel="stylesheet" />
 
@@ -32,8 +31,6 @@
         <script src="https://kit.fontawesome.com/a1cad7ed9a.js" crossorigin="anonymous" data-no-mirror></script>
         <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.26.0/components/prism-core.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/prismjs@1.26.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror></script>
 	    
         <!-- Lunr search -->
         @if (Context.GetBool(WebKeys.GenerateSearchIndex))
@@ -232,9 +229,6 @@
         <!-- Scripts -->
         <script>
             $(document).ready(function() {
-                // Bootstrap tooltips
-                $('[data-toggle="tooltip"]').tooltip();
-
 				// Keeps the sidebars in view on wider viewports
 				let left = null;
 				let leftParent = null;

@@ -450,6 +450,7 @@ code, code[class*="language-"], pre[class*="language-"] {
 
     svg {
       min-height: 200px;
+      max-width: unset !important;
     }
   }
   .node rect,

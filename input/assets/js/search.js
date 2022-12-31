@@ -1,6 +1,13 @@
+if (document.readyState !== 'loading') {
+    setupSearch();
+} else {
+    document.addEventListener('DOMContentLoaded', setupSearch);
+}
+
 function runSearch(query) {
+    const resultsEl = document.getElementById("search-results");
     // Clear previous search results
-    $("#search-results").empty();
+    resultsEl.innerHTML = "";
 
     // If the search term is less than 2 characters, wait until the user types some more stuff
     if (query.length < 2)
@@ -42,30 +49,32 @@ function runSearch(query) {
                 listHtml += `
 <div class="p-3 mb-2 bg-light page-box">
     <h4><a href="${res.link}${highlight}">${res.title}</a></h4>
-    <div class="font-size-sm">${res.excerpt}</div>
+    <div class="font-size-sm">${res.excerpt ?? ""}</div>
 </div>
 `;
             }
         }
         listHtml += "</ul>";
-        $("#search-results").append(listHtml);
+        resultsEl.innerHTML = listHtml;
     });
 }
-$(document).ready(function() {
-    if ($("#search-results").length === 0) {
+
+function setupSearch() {
+    const searchBox = document.getElementById("search");
+    if (searchBox === null) {
         return;
     }
 
     // Hook into changes on the search box
-    $("#search").on('input propertychange paste', function() {
-        runSearch($("#search").val());
-    });
+    searchBox.addEventListener("input", () => runSearch(searchBox.value));
+    searchBox.addEventListener("propertychange", () => runSearch(searchBox.value));
+    searchBox.addEventListener("paste", () => runSearch(searchBox.value));
 
     // If the URL contains a search parameter, do that search now
     const urlParams = new URLSearchParams(window.location.search);
     const queryParam = urlParams.get('query');
     if (queryParam) {
-        $("#search").val(queryParam);
-        runSearch($("#search").val());
+        searchBox.value = queryParam;
+        runSearch(searchBox.value);
     }
-});
+}

@@ -16,11 +16,6 @@ $(document).ready(function() {
         });
     mermaid.init(undefined, ".mermaid");
 
-    // Remove the max-width setting that Mermaid sets
-    var mermaidSvg = $('.mermaid svg');
-    mermaidSvg.addClass('img-fluid');
-    mermaidSvg.css('max-width', '');
-
     // Make it scrollable
     var target = document.querySelector(".mermaid svg");
     if(target !== null)

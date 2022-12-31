@@ -450,6 +450,9 @@ code, code[class*="language-"], pre[class*="language-"] {
 
     svg {
       min-height: 200px;
+      height: auto;
+      /* Remove the max-width setting that Mermaid sets */
+      max-width: 100% !important;
     }
   }
   .node rect,

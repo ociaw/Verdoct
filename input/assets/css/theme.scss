@@ -329,7 +329,7 @@ code, code[class*="language-"], pre[class*="language-"] {
         opacity: 0.6;
         transition: opacity 0.5s;
         display: block !important;
-        position: absolute;
+        position: sticky;
         max-height: 100vh;
         z-index: 1020;
 

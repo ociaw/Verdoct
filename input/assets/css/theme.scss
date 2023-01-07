@@ -431,12 +431,12 @@ code, code[class*="language-"], pre[class*="language-"] {
     overflow: hidden !important;
     visibility: hidden !important;
     margin-bottom: $spacer;
-    margin-top: $spacer;
 
     &[data-processed="true"] {
       visibility: visible !important;
     }
     min-height: 200px;
+    line-height: 1;
 
     svg {
       min-height: 200px;

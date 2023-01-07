@@ -5,11 +5,6 @@ if (document.readyState !== 'loading') {
 }
 
 function setupDocable() {
-    quicklink.listen();
-
-    // Bootstrap tooltips
-    $('[data-toggle="tooltip"]').tooltip();
-
     // Mermaid diagrams
     mermaid.initialize(
         {

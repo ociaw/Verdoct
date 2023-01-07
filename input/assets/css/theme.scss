@@ -79,19 +79,9 @@ body {
         color: $value;
     }
 
-    .icon-#{$color} {
-        --fa-primary-color: #{$value};
-        --fa-secondary-color: #{lighten($value, 20%)};
-    }
-
     .badge-#{$color} {
         @include badge-variant($value);
     }
-}
-
-.icon-theme {
-    --fa-primary-color: #{$primary};
-    --fa-secondary-color: #{$secondary};
 }
 
 .icon-100 {
@@ -99,7 +89,7 @@ body {
     height: auto !important;
 }
 
-$font-family-serif: 'Roboto Slab', serif !default;
+$font-family-serif: 'Times New Roman', Times, FreeSerif, serif !default;
 
 .font-sans-serif {
     font-family: $font-family-sans-serif !important;

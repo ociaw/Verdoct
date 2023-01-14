@@ -43,7 +43,7 @@
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn:not(:last-child),
   > .btn-group:not(:last-child) > .btn {
     @include border-right-radius(0);
   }
@@ -60,48 +60,6 @@
 
 .btn-group-sm > .btn { @extend .btn-sm; }
 .btn-group-lg > .btn { @extend .btn-lg; }
-
-
-//
-// Split button dropdowns
-//
-
-.dropdown-toggle-split {
-  padding-right: $btn-padding-x * .75;
-  padding-left: $btn-padding-x * .75;
-
-  &::after,
-  .dropup &::after,
-  .dropright &::after {
-    margin-left: 0;
-  }
-
-  .dropleft &::before {
-    margin-right: 0;
-  }
-}
-
-.btn-sm + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-sm * .75;
-  padding-left: $btn-padding-x-sm * .75;
-}
-
-.btn-lg + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-lg * .75;
-  padding-left: $btn-padding-x-lg * .75;
-}
-
-
-// The clickable button for toggling the menu
-// Set the same inset shadow as the :active state
-.btn-group.show .dropdown-toggle {
-  @include box-shadow($btn-active-box-shadow);
-
-  // Show no shadow for `.btn-link` since it has no other button styles.
-  &.btn-link {
-    @include box-shadow(none);
-  }
-}
 
 
 //
@@ -124,7 +82,7 @@
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn:not(:last-child),
   > .btn-group:not(:last-child) > .btn {
     @include border-bottom-radius(0);
   }

@@ -41,8 +41,7 @@
   }
 
   &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
+  &:not(:disabled):not(.disabled).active {
     color: color-yiq($active-background);
     background-color: $active-background;
     @if $enable-gradients {
@@ -83,8 +82,7 @@
   }
 
   &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
+  &:not(:disabled):not(.disabled).active {
     color: color-yiq($active-background);
     background-color: $active-background;
     border-color: $active-border;

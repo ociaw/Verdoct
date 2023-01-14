@@ -79,11 +79,6 @@
     padding-right: 0;
     padding-left: 0;
   }
-
-  .dropdown-menu {
-    position: static;
-    float: none;
-  }
 }
 
 
@@ -172,10 +167,6 @@
 
         .navbar-nav {
           flex-direction: row;
-
-          .dropdown-menu {
-            position: absolute;
-          }
 
           .nav-link {
             padding-right: $navbar-nav-link-padding-x;

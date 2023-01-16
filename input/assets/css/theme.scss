@@ -78,10 +78,6 @@ body {
     .text-#{$color} {
         color: $value;
     }
-
-    .badge-#{$color} {
-        @include badge-variant($value);
-    }
 }
 
 .icon-100 {

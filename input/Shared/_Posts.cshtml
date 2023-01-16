@@ -8,7 +8,7 @@
                 <h4>@Html.DocumentLink(post)</h4>
                 <div class="small text-black-50">
                     @post.GetDateTime("Published").ToLongDateString() in
-                    <a href="@(topicDocument.GetLink())"><span class="badge badge-light">@topicDocument.GetTitle()</span></a>
+                    <a href="@(topicDocument.GetLink())"><span>@topicDocument.GetTitle()</span></a>
                 </div>
                 @if (!string.IsNullOrEmpty(excerpt))
                 {
@@ -28,13 +28,13 @@
             <div class="float-sm-left">
                 @if (newer != null)
                 {
-                    <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer</a>
+                    <a href="@Context.GetLink(newer)" role="button">Newer</a>
                 }
             </div>
             <div class="float-sm-right">
                 @if (older != null)
                 {
-                    <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older</a>
+                    <a href="@Context.GetLink(older)" role="button">Older</a>
                 }
             </div>
         </div>

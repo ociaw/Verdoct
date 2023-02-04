@@ -5,7 +5,7 @@
             .Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Assembly")
             .OrderBy(x => x.GetString(CodeAnalysisKeys.DisplayName))
             .ToList();
-    foreach(IDocument assembly in assemblies)
+    foreach (IDocument assembly in assemblies)
     {
         string activeClass = assembly.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
             ? "active"

@@ -3,7 +3,7 @@
 
 @{
     string excerpt = Model.GetString(Keys.Excerpt);
-    <div class="p-3 mb-2 bg-light page-box">
+    <div class="child-page page-box">
         <h4>@Html.DocumentLink(Model)</h4>
 
         @if (!string.IsNullOrEmpty(excerpt))
@@ -18,14 +18,12 @@
                 .ToDocumentList();
             if (!Model.GetBool(SiteKeys.NoChildPages) && children.Count > 0)
             {
-                <ul class="list-inline border-top mt-2 pt-2 small">
+                <section class="child-pages">
                     @foreach (IDocument child in children)
                     {
-                        <li class="list-inline-item">
-                            @Html.DocumentLink(child)
-                        </li>
+                        <div class="child-page">@Html.DocumentLink(child)</div>
                     }
-                </ul>
+                </section>
             }
         }
     </div>

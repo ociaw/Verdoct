@@ -16,26 +16,26 @@
         || derivedTypes?.Count > 0
         || implementingTypes?.Count > 0)
     {
-		<dl class="dl-horizontal">
-	        @if (containingAssembly != null)
+		<dl>
+	        @if (containingAssembly is object)
 	        {
     		    <dt>Assembly</dt>
     		    <dd>@Context.GetTypeLink(containingAssembly)</dd>
 	        }
 
-	        @if (containingNamespace != null)
+	        @if (containingNamespace is object)
 	        {
     		    <dt>Namespace</dt>
     		    <dd>@Context.GetTypeLink(containingNamespace)</dd>
 	        }
 
-			@if(containingType != null)
+			@if(containingType is object)
 			{
 				<dt>Containing Type</dt>
 				<dd>@Context.GetTypeLink(containingType)</dd>
 			}
 
-			@if(overridden != null)
+			@if(overridden is object)
 			{
 				<dt>Overridden</dt>
 				<dd>@Context.GetTypeLink(overridden)</dd>
@@ -107,7 +107,7 @@
     		    </dd>
 	        }
 
-			@if(type != null)
+			@if (type is object)
 			{
 				<dt>@Document.GetString(CodeAnalysisKeys.Kind) Type</dt>
 				<dd>@Context.GetTypeLink(type)</dd>

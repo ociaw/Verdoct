@@ -4,16 +4,16 @@
         IDocument topicDocument = OutputPages[$"news/topics/{post.GetString("topic")}/index.html"].First();
         string excerpt = post.GetString(Keys.Excerpt);
         <div>
-            <div class="p-3 mb-2 bg-light page-box">
+            <div class="page-box">
                 <h4>@Html.DocumentLink(post)</h4>
-                <div class="small text-black-50">
+                <div>
                     @post.GetDateTime("Published").ToLongDateString() in
                     <a href="@(topicDocument.GetLink())"><span>@topicDocument.GetTitle()</span></a>
                 </div>
                 @if (!string.IsNullOrEmpty(excerpt))
                 {
                     @Html.Raw(excerpt)
-                    <p class="small"><a href="@Context.GetLink(post)">Read more...</a></p>
+                    <p><a href="@Context.GetLink(post)">Read more...</a></p>
                 }
             </div>
         </div>
@@ -25,13 +25,13 @@
     @if (older != null || newer != null)
     {
         <div>
-            <div class="float-sm-left">
+            <div>
                 @if (newer != null)
                 {
                     <a href="@Context.GetLink(newer)" role="button">Newer</a>
                 }
             </div>
-            <div class="float-sm-right">
+            <div>
                 @if (older != null)
                 {
                     <a href="@Context.GetLink(older)" role="button">Older</a>

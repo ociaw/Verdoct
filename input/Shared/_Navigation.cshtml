@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light align-items-start">
+<nav class="navbar navbar-expand-md navbar-light align-items-start fuselage">
     <a class="navbar-brand" href="@Context.GetLink("/")">
         @{
             string logo = Document.GetString(SiteKeys.Logo);
@@ -8,15 +8,12 @@
             }
             else
             {
-                <span class="text-primary">@Document.GetString(SiteKeys.SiteTitle)</span>
+                <span>@Document.GetString(SiteKeys.SiteTitle)</span>
             }
         }
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-topnav" aria-controls="collapse-topnav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="collapse-topnav" class="collapse navbar-collapse flex-wrap">
-        <ul class="navbar-nav mr-auto">
+    <div id="collapse-topnav">
+        <ul class="navbar-nav">
             @await Html.PartialAsync("_LeftNavigation")
         </ul>
         <ul class="navbar-nav">

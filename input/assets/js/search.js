@@ -37,7 +37,7 @@ function runSearch(query) {
 
         // Prepare output formatting
         var listHtml = "<ul>";
-        if (results.length == 0)
+        if (results.length === 0)
         {
             listHtml += "<li>No results found</li>";
         }
@@ -47,9 +47,9 @@ function runSearch(query) {
             {
                 var res = results[i];
                 listHtml += `
-<div class="p-3 mb-2 bg-light page-box">
+<div class="search-result page-box">
     <h4><a href="${res.link}${highlight}">${res.title}</a></h4>
-    <div class="font-size-sm">${res.excerpt ?? ""}</div>
+    <div class="excerpt">${res.excerpt ?? ""}</div>
 </div>
 `;
             }

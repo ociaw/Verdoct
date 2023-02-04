@@ -5,18 +5,6 @@ if (document.readyState !== 'loading') {
 }
 
 function setupDocable() {
-    // Mermaid diagrams
-    mermaid.initialize(
-        {
-            flowchart:
-                {
-                    useMaxWidth: false
-                },
-            startOnLoad: false,
-            cloneCssStyles: false
-        });
-    mermaid.init(undefined, ".mermaid");
-
     // Make it scrollable
     let target = document.querySelector(".mermaid svg");
     if (target === null) {

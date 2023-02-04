@@ -1,0 +1,26 @@
+@model IDocument
+@{
+    IDocument containingAssembly = Document.GetDocument(CodeAnalysisKeys.ContainingAssembly);
+    IDocument containingNamespace = Document.GetDocument(CodeAnalysisKeys.ContainingNamespace);
+	IDocument containingType = Document.GetDocument(CodeAnalysisKeys.ContainingType);
+    if (containingAssembly is null && containingNamespace is null && containingType is null)
+		return;
+}
+
+<div class="sidebar-root page-box">
+    @if (containingAssembly is object)
+    {
+        <div class="sidebar-nav-item sidebar-header">Assembly</div>
+        <div class="sidebar-nav-item">@Context.GetTypeLink(containingAssembly, false)</div>
+    }
+    @if (containingNamespace is object)
+    {
+        <div class="sidebar-nav-item sidebar-header">Namespace</div>
+        <div class="sidebar-nav-item">@Context.GetTypeLink(containingNamespace, false)</div>
+    }
+    @if (containingType is object)
+    {
+        <div class="sidebar-nav-item sidebar-header">Type</div>
+        <div class="sidebar-nav-item">@Context.GetTypeLink(containingType, false)</div>
+    }
+</div>

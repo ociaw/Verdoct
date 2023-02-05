@@ -11,15 +11,19 @@
         .ToList();
     if (constructors is object && constructors.Count > 0)
     {
-        <div class="sidebar-nav-item sidebar-header">Constructors</div>
-        <div class="sidebar-nav-children">
-            @foreach (IDocument constructor in constructors)
-            {
-                string activeClass = constructor.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
-                    ? "active"
-                    : null;
-                <div class="sidebar-nav-item @activeClass">@Context.GetTypeLink(constructor, false)</div>
-            }
+        <div class="sidebar-item has-children">
+            <div class="sidebar-header">Constructors</div>
+            <div class="sidebar-children">
+                @foreach (IDocument constructor in constructors)
+                {
+                    string activeClass = constructor.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
+                        ? "active"
+                        : null;
+                    <div class="sidebar-item @activeClass">
+                        <div class="sidebar-header">@Context.GetTypeLink(constructor, false)</div>
+                    </div>
+                }
+            </div>
         </div>
     }
 
@@ -29,16 +33,20 @@
             .GroupBy(x => x.GetString(CodeAnalysisKeys.Kind))
             .OrderBy(x => x.Key))
     {
-        <div class="sidebar-nav-item sidebar-header">@memberGroup.Key Members</div>
-        <div class="sidebar-nav-children">
-            @foreach (IDocument member in memberGroup
-                .OrderBy(x => x.GetString(CodeAnalysisKeys.Name)))
-            {
-                string activeClass = member.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
-                    ? "active"
-                    : null;
-                <div class="sidebar-nav-item @activeClass">@Context.GetTypeLink(member, false)</div>
-            }
+        <div class="sidebar-item has-children">
+            <div class="sidebar-header">@memberGroup.Key Members</div>
+            <div class="sidebar-children">
+                @foreach (IDocument member in memberGroup
+                    .OrderBy(x => x.GetString(CodeAnalysisKeys.Name)))
+                {
+                    string activeClass = member.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
+                        ? "active"
+                        : null;
+                    <div class="sidebar-item @activeClass">
+                        <div class="sidebar-header">@Context.GetTypeLink(member, false)</div>
+                    </div>
+                }
+            </div>
         </div>
     }
 }

@@ -10,17 +10,23 @@
 <div class="sidebar-root page-box">
     @if (containingAssembly is object)
     {
-        <div class="sidebar-nav-item sidebar-header">Assembly</div>
-        <div class="sidebar-nav-item">@Context.GetTypeLink(containingAssembly, false)</div>
+        <div class="sidebar-item">
+            <div class="sidebar-header">Assembly</div>
+            <div class="sidebar-text">@Context.GetTypeLink(containingAssembly, false)</div>
+        </div>
     }
     @if (containingNamespace is object)
     {
-        <div class="sidebar-nav-item sidebar-header">Namespace</div>
-        <div class="sidebar-nav-item">@Context.GetTypeLink(containingNamespace, false)</div>
+        <div class="sidebar-item">
+            <div class="sidebar-header">Namespace</div>
+            <div class="sidebar-text">@Context.GetTypeLink(containingNamespace, false)</div>
+        </div>
     }
     @if (containingType is object)
     {
-        <div class="sidebar-nav-item sidebar-header">Type</div>
-        <div class="sidebar-nav-item">@Context.GetTypeLink(containingType, false)</div>
+        <div class="sidebar-item">
+            <div class="sidebar-header">Type</div>
+            <div class="sidebar-text">@Context.GetTypeLink(containingType, false)</div>
+        </div>
     }
 </div>

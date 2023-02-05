@@ -1,15 +1,21 @@
-<div class="sidebar-nav-item sidebar-header">Assemblies</div>
-@{
-    IReadOnlyList<IDocument> assemblies =
-        Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
-            .Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Assembly")
-            .OrderBy(x => x.GetString(CodeAnalysisKeys.DisplayName))
-            .ToList();
-    foreach (IDocument assembly in assemblies)
-    {
-        string activeClass = assembly.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
-            ? "active"
-            : null;
-        <div class="sidebar-nav-item @activeClass">@Context.GetTypeLink(assembly, false)</div>
-    }
-}
+<div class="sidebar-item has-children">
+    <div class="sidebar-header">Assemblies</div>
+    <div class="sidebar-children">
+        @{
+            IReadOnlyList<IDocument> assemblies =
+                Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
+                    .Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Assembly")
+                    .OrderBy(x => x.GetString(CodeAnalysisKeys.DisplayName))
+                    .ToList();
+            foreach (IDocument assembly in assemblies)
+            {
+                string activeClass = assembly.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId)
+                    ? "active"
+                    : null;
+                <div class="sidebar-item @activeClass">
+                    <div class="sidebar-header">@Context.GetTypeLink(assembly, false)</div>
+                </div>
+            }
+        }
+    </div>
+</div>

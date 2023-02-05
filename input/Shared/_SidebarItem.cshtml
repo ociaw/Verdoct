@@ -1,7 +1,32 @@
 @* Override in your own input directory to customize the appearance of items in the sidebar *@
-@* The document for the sidebar link and whether it has children is passed in as the model *@
-@inherits StatiqRazorPage<(IDocument, bool)>
+@* The current for the sidebar link and whether it has children is passed in as the model *@
+@inherits StatiqRazorPage<(IDocument current, Int32 limit)>
+                
+@{
+    var (current, limit) = Model;
+    if (current.GetBool(SiteKeys.ShowInSidebar, false))
+        return;
 
-<div class="sidebar-nav-item @(Document.IdEquals(Model.Item1) ? "active" : null) @(Model.Item2 ? "has-children" : null)">
-    @Html.DocumentLink(Model.Item1)
+    var children = limit <= 0 ? DocumentList<IDocument>.Empty : OutputPages
+            .GetChildrenOf(current)
+            .Where(x => !x.ContainsKey(Keys.RedirectTo))
+            .ToDocumentList();
+    var isActive = Document.IdEquals(current);
+}
+
+<div class="sidebar-item @(isActive ? "active" : null) @(children.Any() ? "has-children" : null)">
+    @if (children.Any())
+    {
+        <div class="sidebar-header">@Html.DocumentLink(current)</div>
+        <div class="sidebar-children">
+            @foreach (IDocument child in children)
+            {
+                @await Html.PartialAsync("_SidebarItem", (child, limit - 1))
+            }
+        </div>
+    }
+    else
+    {
+        <div class="sidebar-text">@Html.DocumentLink(current)</div>
+    }
 </div>

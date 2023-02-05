@@ -11,13 +11,17 @@
 			.GroupBy(x => x.GetString(CodeAnalysisKeys.SpecificKind))
 			.OrderBy(x => x.Key))
 	{
-		<div class="sidebar-nav-item sidebar-header">@typeGroup.Key Types</div>
-		<div class="sidebar-nav-children">
-			@foreach(IDocument type in typeGroup.OrderBy(x => x.GetString(CodeAnalysisKeys.Name)))
-			{
-				string activeClass = type.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId) ? "active" : null;
-				<div class="sidebar-nav-item @activeClass">@Context.GetTypeLink(type, false)</div>
-			}
+		<div class="sidebar-item has-children">
+			<div class="sidebar-header">@typeGroup.Key Types</div>
+			<div class="sidebar-children">
+				@foreach(IDocument type in typeGroup.OrderBy(x => x.GetString(CodeAnalysisKeys.Name)))
+				{
+					string activeClass = type.GetString(CodeAnalysisKeys.SymbolId) == Document.GetString(CodeAnalysisKeys.SymbolId) ? "active" : null;
+					<div class="sidebar-item @activeClass">
+						<div class="sidebar-header">@Context.GetTypeLink(type, false)</div>
+					</div>
+				}
+			</div>
 		</div>
 	}
 }

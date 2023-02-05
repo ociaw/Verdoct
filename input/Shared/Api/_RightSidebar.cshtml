@@ -3,14 +3,16 @@
     if (headings?.Count > 0)
     {
         <div class="sidebar-root">
-            <div class="sidebar-item has-children"><div class="sidebar-header">On This Page</div></div>
-            <div class="sidebar-children">
-                @foreach ((string link, string display) heading in headings)
-                {
-                    <div class="sidebar-item">
-                        <div class="sidebar-header"><a href="#@heading.link">@heading.display</a></div>
-                    </div>
-                }
+            <div class="sidebar-item">
+                <div class="sidebar-header">On This Page</div>
+                <div class="sidebar-children">
+                    @foreach ((string link, string display) heading in headings)
+                    {
+                        <div class="sidebar-item">
+                            <div class="sidebar-header"><a href="#@heading.link">@heading.display</a></div>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     }

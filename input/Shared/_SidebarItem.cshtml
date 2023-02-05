@@ -14,7 +14,7 @@
     var isActive = Document.IdEquals(current);
 }
 
-<div class="sidebar-item @(isActive ? "active" : null) @(children.Any() ? "has-children" : null)">
+<div class="sidebar-item @(isActive ? "active" : null)">
     @if (children.Any())
     {
         <div class="sidebar-header">@Html.DocumentLink(current)</div>

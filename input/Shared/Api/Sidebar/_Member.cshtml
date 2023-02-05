@@ -11,7 +11,7 @@
         .ToList();
     if (constructors is object && constructors.Count > 0)
     {
-        <div class="sidebar-item has-children">
+        <div class="sidebar-item">
             <div class="sidebar-header">Constructors</div>
             <div class="sidebar-children">
                 @foreach (IDocument constructor in constructors)
@@ -33,7 +33,7 @@
             .GroupBy(x => x.GetString(CodeAnalysisKeys.Kind))
             .OrderBy(x => x.Key))
     {
-        <div class="sidebar-item has-children">
+        <div class="sidebar-item">
             <div class="sidebar-header">@memberGroup.Key Members</div>
             <div class="sidebar-children">
                 @foreach (IDocument member in memberGroup

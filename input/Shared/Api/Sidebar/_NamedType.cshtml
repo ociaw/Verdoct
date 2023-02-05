@@ -11,7 +11,7 @@
 			.GroupBy(x => x.GetString(CodeAnalysisKeys.SpecificKind))
 			.OrderBy(x => x.Key))
 	{
-		<div class="sidebar-item has-children">
+		<div class="sidebar-item">
 			<div class="sidebar-header">@typeGroup.Key Types</div>
 			<div class="sidebar-children">
 				@foreach(IDocument type in typeGroup.OrderBy(x => x.GetString(CodeAnalysisKeys.Name)))

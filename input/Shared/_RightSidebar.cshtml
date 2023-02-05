@@ -11,30 +11,32 @@
     if (headings?.Count > 0)
     {
         <div class="sidebar-root">
-            <div class="sidebar-item has-children"><div class="sidebar-header">On This Page</div></div>
-            <div class="sidebar-children">
-                @foreach (IDocument heading in headings)
-                {
-                    <div class="sidebar-item">
-                        <div class="sidebar-header"><a href="#@(heading.GetString(Keys.HeadingId))">@(await heading.GetContentStringAsync())</a></div>
-                    </div>
-
-                    IReadOnlyList<IDocument> childHeadings = heading
-                        .GetDocumentList(Keys.Children)
-                        ?.Where(x => x.GetInt(Keys.Level) == 2)
-                        .ToList();
-                    if (childHeadings?.Count > 0)
+            <div class="sidebar-item">
+                <div class="sidebar-header">On This Page</div>
+                <div class="sidebar-children">
+                    @foreach (IDocument heading in headings)
                     {
-                        <div class="sidebar-children">
-                            @foreach (IDocument childHeading in childHeadings)
-                            {
-                                <div class="sidebar-item">
-                                    <div class="sidebar-header"><a href="#@(childHeading.GetString(Keys.HeadingId))">@(await childHeading.GetContentStringAsync())</a></div>
-                                </div>
-                            }
+                        <div class="sidebar-item">
+                            <div class="sidebar-header"><a href="#@(heading.GetString(Keys.HeadingId))">@(await heading.GetContentStringAsync())</a></div>
                         </div>
+
+                        IReadOnlyList<IDocument> childHeadings = heading
+                            .GetDocumentList(Keys.Children)
+                            ?.Where(x => x.GetInt(Keys.Level) == 2)
+                            .ToList();
+                        if (childHeadings?.Count > 0)
+                        {
+                            <div class="sidebar-children">
+                                @foreach (IDocument childHeading in childHeadings)
+                                {
+                                    <div class="sidebar-item">
+                                        <div class="sidebar-header"><a href="#@(childHeading.GetString(Keys.HeadingId))">@(await childHeading.GetContentStringAsync())</a></div>
+                                    </div>
+                                }
+                            </div>
+                        }
                     }
-                }
+                </div>
             </div>
         </div>
     }

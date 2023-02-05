@@ -1,67 +1,39 @@
 @import "variables";
 
-:root {
-    // --bg: unset;
-    // --txt: unset;
-    --head-bg: #262F60;
-    --head-txt: #FFF;
-    --btn-bg: #06A;
-    --btn-txt: #FFF;
-    --btn-bord: transparent;
-    --btn-out: #AAA;
-    --pre-bg: #FAFAEE;
-    --pre-txt: #000;
-    --pre-bord: #CCC;
-    // --a: unset;
-    --tag: #06A;
-
-    @media (prefers-color-scheme: dark) {
-        --bg: #202020;
-        --txt: #D5D5D5;
-        --head-bg: #16163F;
-        --head-txt: #DDD;
-        --btn-bg: #048;
-        --btn-txt: #D5D5D5;
-        --btn-bord: #555;
-        // --btn-out: #AAA;
-        --pre-bg: #292929;
-        --pre-txt: #DDD;
-        --pre-bord: #CCC;
-        --a: #75B9F4;
-        --tag: #09A;
-    }
+*, ::before, ::after {
+    box-sizing: border-box;
 }
 
-$mixed: mix($secondary, $primary, 50%);
+html {
+    font-family: var(--sans);
+    line-height: 1.15;
+}
 
 html, body {
     width: 100%;
 }
 
 body {
-    // Only limit overflow on the body so sticky works
-    // See https://github.com/w3c/csswg-drafts/issues/865#issuecomment-379106819
-    // And https://stackoverflow.com/a/54116725
+    display: flex;
+    margin: 0;
+    min-height: 100vh;
+    flex-direction: column;
+    box-sizing: border-box;
     overflow-x: hidden;
-}
-
-@media screen {
-    body {
-        min-height: 100vh;
-    }
-}
-
-.font-size-sm {
-    font-size: $font-size-sm;
+    line-height: 1.75;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: var(--bg);
+    text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0;
     margin-bottom: $headings-margin-bottom;
-    font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
-    line-height: $headings-line-height;
-    color: $headings-color;
+    font-family: $font-family-sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 h1, .h1 { font-size: $h1-font-size; }
@@ -80,9 +52,9 @@ h1, h2, h3, .display-1, .display-2, .display-3, .display-4, .h-section {
 
 h1 {
     font-weight: bold;
-    color: $primary;
-    background: -webkit-linear-gradient(darken($mixed, 5%), darken($primary, 5%));
-    -webkit-background-clip: text;
+    color: $primary-bg;
+    background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     padding-bottom: $spacer * 0.15;
     margin-bottom: $spacer * 0.5;
@@ -91,7 +63,7 @@ h1 {
 h1 * {
     // Need to remove the text-fill from nested elements
     background-image: none;
-    -webkit-background-clip: initial;
+    background-clip: initial;
     -webkit-text-fill-color: initial;
 }
 
@@ -101,6 +73,121 @@ h2 {
 
 h3 {
     color: darken(mix($gray-200, $primary, 70%), 10%);
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+    &:hover {
+        color: $link-hover-color;
+        text-decoration: underline;
+    }
+}
+a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+code, pre, samp {
+    font-family: var(--mono);
+}
+
+code {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+pre {
+    // Remove browser default top margin
+    margin-top: 0;
+    // Reset browser default of `1em` to use `rem`s
+    margin-bottom: 1rem;
+    // Don't allow content to break outside
+    overflow: auto;
+
+    display: block;
+    color: $pre-color;
+    background-color: $pre-bg-color;
+    font-size: 0.875rem;
+}
+
+pre code {
+    display: block;
+    padding: 0 $spacer/2;
+    overflow-x: scroll;
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+}
+
+table {
+    width: 100%;
+    margin-bottom: $spacer;
+    border-collapse: collapse; // Prevent double borders
+    color: $table-color;
+    background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+}
+
+th,
+td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+}
+
+thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    text-align: inherit;
+}
+
+tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: $font-family-serif;
+}
+
+label {
+    // Allow labels to use `margin` for spacing.
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+input {
+    margin: 0; // Remove the margin in Firefox and Safari
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    overflow: visible; // Show the overflow in Edge
+}
+
+ol,
+ul,
+dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: .5rem;
+    margin-left: 0; // Undo browser default
+}
+
+img {
+    vertical-align: middle;
 }
 
 .h-section {
@@ -173,7 +260,7 @@ h3 {
     font-size: $navbar-brand-font-size;
     line-height: inherit;
     white-space: nowrap;
-    color: $primary;
+    color: $primary-bg;
 
     &,&:hover,&:focus {
         text-decoration: none;
@@ -198,62 +285,6 @@ h3 {
     height: 2.5rem;
 }
 
-code {
-    padding: .25rem .5rem;
-    margin: 0;
-    font-size: $code-font-size;
-    color: $code-color;
-    word-wrap: break-word;
-
-    // Streamline the style when inside anchors to avoid broken underline and more
-    a > & {
-        color: inherit;
-    }
-}
-
-pre {
-    display: block;
-    font-size: $code-font-size;
-    color: $pre-color;
-}
-
-pre code {
-    display: block;
-    padding: 0 $spacer/2;
-    overflow-x: scroll;
-    font-size: inherit;
-    color: inherit;
-    word-break: normal;
-}
-
-code, pre {
-    background-color: $gray-200;
-    text-shadow: none;
-}
-
-table {
-    width: 100%;
-    margin-bottom: $spacer;
-    color: $table-color;
-    background-color: $table-bg; // Reset for nesting within parents with `background-color`.
-
-    th,
-    td {
-        padding: $table-cell-padding;
-        vertical-align: top;
-        border-top: $table-border-width solid $table-border-color;
-    }
-
-    thead th {
-        vertical-align: bottom;
-        border-bottom: (2 * $table-border-width) solid $table-border-color;
-    }
-
-    tbody + tbody {
-        border-top: (2 * $table-border-width) solid $table-border-color;
-    }
-}
-
 // Ensures tables don't overflow the page
 .table-responsive {
     display: block;
@@ -266,7 +297,7 @@ table {
     thead {
         th {
             border: none;
-            background: $gray-200 linear-gradient(0deg, $gray-200, $gray-100) repeat-x;
+            background: $gray-200 linear-gradient(0deg, $gray-200, $light) repeat-x;
             font-size: $font-size-sm;
         }
     }
@@ -294,8 +325,8 @@ table {
 }
 
 small {
-    font-size: $small-font-size;
-    font-weight: $font-weight-normal;
+    font-size: 80%;
+    font-weight: normal;
 }
 
 #content {
@@ -351,14 +382,14 @@ small {
         font-size: $h1-font-size;
 
         small {
-            font-size: $small-font-size * 0.8;
+            font-size: 64%;
             color: lighten($primary, 30%);
         }
     }
 }
 
 #undertitle {
-    background: $primary linear-gradient(180deg, $primary 30%, darken($primary, 5%) 100%) repeat-x;
+    background: $primary-bg linear-gradient(180deg, $primary-bg 30%, darken($primary, 5%) 100%) repeat-x;
 
     > div {
         min-height: $spacer * 1.5;
@@ -369,105 +400,74 @@ small {
     }
 }
 
+/* Sidebars */
 .sidebar {
     border-bottom: none;
     padding: $spacer $spacer 0;
-    margin-top: 1.5rem;
+    margin-top: $spacer * 1.5;
     margin-bottom: 0;
     overflow-y: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    opacity: 0.6;
-    transition: opacity 0.5s;
     display: block !important;
     position: sticky;
     max-height: 100vh;
-    z-index: 1020;
-
-    &:hover {
-        opacity: 1;
-    }
+    font-size: .875rem;
 }
 
 // sidebar-root elements can be nested to show root-level styling inside a sidebar
 .sidebar-root {
-    font-size: $font-size-sm;
+    color: var(--txt);
 
     // Root-level items
-    & > .sidebar-nav-item {
-        font-weight: $font-weight-bold;
-        color: $gray-800;
-        margin-bottom: $spacer;
-
-        &.has-children {
-            margin-bottom: 0;
-        }
-
-        &.sidebar-header {
-            margin-bottom: $spacer * 0.25;
-            color: $gray-900;
-            font-size: $font-size-sm * 0.85;
-            text-transform: uppercase;
-        }
+    > .sidebar-item > *:first-child {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.875em;
     }
-
-    & > .sidebar-nav-children {
-        padding-top: $spacer * 0.5;
-        border-top: 3px solid $gray-400;
-        margin-bottom: $spacer;
-
-        & > .sidebar-nav-children {
-            font-size: $font-size-sm * 0.875;
-            padding-left: $spacer * 0.5;
-
-            & > .sidebar-nav-item {
-                border-left: 4px solid $gray-200;
-
-                &.active {
-                    border-left: 4px solid darken($primary, 10%);
-                }
-            }
-        }
+    > .sidebar-item > :is(.sidebar-header, .sidebar-text) {
+        margin-bottom: $spacer * 0.25;
     }
-
-
-    // All items
-    & .sidebar-nav-item {
-        padding: $spacer * 0.15 $spacer * 0.5;
-        color: $gray-600;
-
-        &.active {
-            font-weight: $font-weight-bold;
-            color: $white;
-            background-color: $primary;
-
-            & a {
-                &, &:focus, &:active {
-                    color: $white;
-                }
-
-                &:hover {
-                    color: $white;
-                }
-            }
-        }
-
-        & a {
-            &, &:focus, &:active {
-                color: $gray-600;
-            }
-
-            &:hover {
-                color: darken($primary, 20%);
-            }
-        }
+    > .sidebar-item > .sidebar-children {
+        border-top: 3px solid $border-color;
     }
+}
 
-    .sidebar-nav-children {
-        padding-bottom: $spacer * 0.25;
+.sidebar-item a {
+    color: inherit;
+}
+
+:where(.sidebar-header, .sidebar-text) {
+    padding-left: $spacer / 2;
+    
+    &:not(:hover):not(:active) {
+        opacity: .7;
     }
+}
+
+.active > :is(.sidebar-header, .sidebar-text) {
+    font-weight: 700;
+    color: $primary-color;
+    background-color: $primary-bg;
+    opacity: 1;
+}
+
+.sidebar-children {
+    padding-left: $spacer / 4;
+    padding-top: $spacer / 4;
+    font-size: .9em;
+    font-weight: lighter;
+}
+
+/* Right Sidebar */
+.edit-link {
+    margin-top: $spacer;
+    padding-top: $spacer;
+    border-top: $border-width solid $border-color;
+    font-size: 0.875em;
+    font-weight: 700;
 }
 
 /* Search */
@@ -513,6 +513,6 @@ input[type="search"] {
     stroke: #000 !important;
   }
   .cluster rect {
-    fill: $gray-100 !important;
+    fill: $light !important;
     stroke: $gray-300 !important;
   }

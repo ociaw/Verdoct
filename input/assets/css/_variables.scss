@@ -1,33 +1,77 @@
 // Variables
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$primary:                           #007bff;
+$secondary:                         darken($primary, 20%) !default;
+$tertiary:                          darken($primary, 10%) !default;
+$mixed:                             mix($secondary, $primary, 50%);
+
+$primary-bg:                        var(--prim-bg) !default;
+$primary-color:                     var(--prim-txt) !default;
+$bg:                                var(--bg) !default;
+$txt:                               var(--txt) !default;
+$content-bg:                        var(--content-bg) !default;
+$footer-bg:                         var(--footer-bg) !default;
+$footer-txt:                        var(--footer-txt) !default;
+$pre-color:                         var(--pre-txt) !default;
+$pre-bg-color:                      var(--pre-bg) !default;
+
+:root {
+  --serif: 'Times New Roman', Times, FreeSerif, serif;
+  --sans: Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
+  --mono: Consolas, FreeMono, FiraMono, UbuntuMono, monospace;
+
+  --bk-wing: 768px;
+  --bk-narrow: 384px;
+
+  --prim-bg: #{$primary};
+  --prim-txt: #FFF;
+  --bg: #F8F9FA;
+  --txt: #000;
+  --head-bg: #262F60;
+  --head-txt: #FFF;
+  --content-bg: #FFF;
+  --footer-bg: #212529;
+  --footer-txt: #dee2e6;
+  --btn-bg: #06A;
+  --btn-txt: #FFF;
+  --btn-bord: transparent;
+  --btn-out: #AAA;
+  --pre-bg: #e9ecef; // #FAFAEE;
+  --pre-txt: #000;
+  --pre-bord: #CCC;
+  --tag: #06A;
+
+  @media (prefers-color-scheme: dark) {
+    --bg: #202020;
+    --txt: #D5D5D5;
+    --head-bg: #16163F;
+    --head-txt: #DDD;
+    --btn-bg: #048;
+    --btn-txt: #D5D5D5;
+    --btn-bord: #555;
+    // --btn-out stays the same between dark and light
+    --pre-bg: #292929;
+    --pre-txt: #DDD;
+    --pre-bord: #CCC;
+    --a: #75B9F4;
+    --tag: #09A;
+  }
+}
 
 // Color system
 
 $white:    #fff !default;
-$gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
-$gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
 $blue:    #007bff !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
-$orange:  #fd7e14 !default;
-$teal:    #20c997 !default;
-
-$primary:       $blue !default;
-$secondary:     darken($primary, 20%) !default;
-$light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$light:         #f8f9fa !default;
+$dark:          #343a40 !default;
 
 // Spacing
 //
@@ -36,29 +80,12 @@ $dark:          $gray-800 !default;
 
 $spacer: 1rem !default;
 
-
-// Body
-//
-// Settings for the `<body>` element.
-
-$body-bg:                   $gray-100 !default;
-$body-color:                $gray-700 !default;
-
-
 // Links
 //
 // Style anchor elements.
 
 $link-color:                              $primary !default;
-$link-decoration:                         none !default;
 $link-hover-color:                        darken($link-color, 15%) !default;
-$link-hover-decoration:                   underline !default;
-
-// Paragraphs
-//
-// Style p element.
-
-$paragraph-margin-bottom:   1rem !default;
 
 // Components
 //
@@ -72,14 +99,9 @@ $border-radius:               .25rem !default;
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
-
-// stylelint-disable value-keyword-case
-
 $font-family-serif:           'Times New Roman', Times, FreeSerif, serif !default;
 $font-family-sans-serif:      Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif !default;
 $font-family-monospace:       Consolas, FreeMono, FiraMono, UbuntuMono, monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
-// stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:                $font-size-base * 1.25 !default;
@@ -99,44 +121,13 @@ $h5-font-size:                $font-size-base * 1.15 !default;
 $h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      $spacer / 2 !default;
-$headings-font-family:        null !default;
-$headings-font-weight:        500 !default;
-$headings-line-height:        1.2 !default;
-$headings-color:              null !default;
-
-$display-line-height:         $headings-line-height !default;
-
-$lead-font-size:              $font-size-base * 1.25 !default;
-$lead-font-weight:            300 !default;
-
-$small-font-size:             80% !default;
-
-$text-muted:                  $gray-600 !default;
-
-$hr-border-color:             rgba($black, .1) !default;
-$hr-border-width:             $border-width !default;
-
-$mark-padding:                .2em !default;
-
-$dt-font-weight:              $font-weight-bold !default;
-
-$kbd-box-shadow:              inset 0 -.1rem 0 rgba($black, .25) !default;
-$nested-kbd-font-weight:      $font-weight-bold !default;
-
-$list-inline-padding:         .5rem !default;
-
-$mark-bg:                     #fcf8e3 !default;
-
-$hr-margin-y:                 $spacer !default;
 
 
 // Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:          .75rem !default;
-
-$table-color:                 $body-color !default;
+$table-color:                 var(--txt) !default;
 $table-bg:                    null !default;
 $table-accent-bg:             rgba($black, .05) !default;
 $table-hover-color:           $table-color !default;
@@ -174,18 +165,3 @@ $navbar-brand-font-size:            $font-size-lg !default;
 $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
 $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
 $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
-
-// Code
-
-$code-font-size:                    87.5% !default;
-$code-color:                        $gray-900 !default;
-
-$kbd-padding-y:                     .2rem !default;
-$kbd-padding-x:                     .4rem !default;
-$kbd-font-size:                     $code-font-size !default;
-$kbd-color:                         $white !default;
-$kbd-bg:                            $gray-900 !default;
-
-$pre-color:                         $gray-900 !default;
-
-$content-bg: $white;

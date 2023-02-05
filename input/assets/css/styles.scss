@@ -11,36 +11,18 @@ $mixed: mix($secondary, $primary, 50%);
 
 /* Main Layout */
 
-*, ::before, ::after {
-  box-sizing: border-box;
-}
-
-body
-{
-  display: flex;
-  margin: 0;
-  flex-direction: column;
-  height: 100vh;
-  box-sizing: border-box;
-  line-height: 1.75;
-  font-weight: 400;
-  font-family: $font-family-sans-serif;
-  /* text-align: center; // Omitted for now */
-
-  > *
-  {
+body {
+  > * {
     width: 100%;
   }
 
-  > header, > footer
-  {
+  > header, > footer {
     display: flex;
     flex-direction: column;
     text-align: center;
   }
   
-  > header
-  {
+  > header {
     background: $gray-200 linear-gradient(180deg, $gray-200, $white) repeat-x;
 
     > div:first-child {
@@ -49,30 +31,19 @@ body
     }
   }
   
-  > footer
-  {
+  > footer {
     padding: 1.5rem 1rem 1rem;
-    font-size: $font-size-sm;
-    color: $text-muted;
-    background-color: $gray-900;
-    a
-    {
-      color: $text-muted;
-    }
+    color: $footer-txt;
+    background-color: $footer-bg;
   }
 
-  > main
-  {
+  > main {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     background: linear-gradient(180deg, #007bff 30%, #006fe6 100%) repeat-x;
     background-size: auto 1.5rem;
   }
-}
-
-p {
-  font-family: $font-family-serif;
 }
 
 .hull {
@@ -99,38 +70,38 @@ p {
 
 .page-box {
   border: 1px solid $gray-200;
-  box-shadow: inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075);
+  box-shadow: inset 0 1px 0 rgba(#FFF, .15), 0 1px 1px rgba(#000, .075);
   border-radius: $border-radius;
 
   *:last-child {
     margin-bottom: 0;
   }
-  
-  .sidebar-nav-item:not(.sidebar-header), dd {
+
+  dd {
     margin-top: 0;
     padding-top: 0;
-    font-weight: $font-weight-normal;
+    font-weight: 400;
   }
 
-  .sidebar-nav-item.sidebar-header, dt {
+  > .sidebar-item > .sidebar-header, dt {
     margin-bottom: 0;
     padding-bottom: 0;
   }
 }
 
 .sidebar .page-box {
-  background-color: $white;
+  background-color: $content-bg;
   margin-bottom: 1rem;
 }
 
 #content .page-box {
-  background-color: $light;
+  background-color: $bg;
 }
 
 #titlebar {
   padding: 1.5rem 0;
   text-align: left;
-  background: $primary linear-gradient(180deg, $mixed, $primary) repeat-x;
+  background: $primary-bg linear-gradient(180deg, $mixed, $primary-bg) repeat-x;
   color: $white;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -138,23 +109,15 @@ p {
 
 #content {
   padding: 1.5rem;
-  background-color: $content-bg;
+  background-color: var(--content-bg);
 }
 
 #statiq-attribution {
-  font-size: $font-size-sm;
-  color: $text-muted;
+  font-size: 0.875em;
+  filter: brightness(80%);
   a {
-    color: $text-muted;
+    color: inherit;
   }
-}
-
-/* Right Sidebar */
-.edit-link {
-  padding-top: $spacer;
-  border-top: $border-width solid $border-color;
-  font-size: $small-font-size;
-  font-weight: $font-weight-bold;
 }
 
 /* API-specific */

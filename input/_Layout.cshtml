@@ -54,9 +54,9 @@
                 @await Html.PartialAsync("_Navigation")
             </div>
             @{
-                NormalizedPath apiPath = new NormalizedPath(Context.GetString(DocsKeys.ApiPath));
+                string apiPath = Context.GetString(DocsKeys.ApiPath);
                 string section = Document.Destination.Segments.Length == 0 ? null :
-                    (apiPath.ContainsDescendantOrSelf(Document.Destination) ? apiPath.ToString() : Document.Destination.Segments[0].ToString());
+                    (new NormalizedPath(apiPath).ContainsDescendantOrSelf(Document.Destination) ? apiPath : Document.Destination.Segments[0].ToString());
                 IDocument root = OutputPages.Get(section + "/index.html");
             }
             @if (!Document.GetBool(SiteKeys.NoTitle))

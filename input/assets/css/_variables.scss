@@ -1,9 +1,7 @@
 // Variables
 
 $primary:                           #007bff;
-$secondary:                         darken($primary, 20%) !default;
-$tertiary:                          darken($primary, 10%) !default;
-$mixed:                             mix($secondary, $primary, 50%);
+$mixed:                             darken($primary, 10%) !default;
 
 $primary-bg:                        var(--prim-bg) !default;
 $primary-color:                     var(--prim-txt) !default;
@@ -149,16 +147,13 @@ $table-border-level:          -6 !default;
 // Navs
 
 $nav-link-padding-y:                .5rem !default;
-$nav-link-padding-x:                1rem !default;
-$nav-link-disabled-color:           $gray-600 !default;
+$nav-link-padding-x:                .5rem !default;
 
 
 // Navbar
 
 $navbar-padding-y:                  $spacer / 2 !default;
 $navbar-padding-x:                  $spacer !default;
-
-$navbar-nav-link-padding-x:         .5rem !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link

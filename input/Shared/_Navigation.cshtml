@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light align-items-start fuselage">
+<nav class="navbar fuselage">
     <a class="navbar-brand" href="@Context.GetLink("/")">
         @{
             string logo = Document.GetString(SiteKeys.Logo);
@@ -12,13 +12,11 @@
             }
         }
     </a>
-    <div id="collapse-topnav">
-        <ul class="navbar-nav">
-            @await Html.PartialAsync("_LeftNavigation")
-        </ul>
-        <ul class="navbar-nav">
-            @await Html.PartialAsync("_RightNavigation")
-            @await Html.PartialAsync("_ExtraNavigation")
-        </ul>
+    <div class="navbar-nav">
+        @await Html.PartialAsync("_LeftNavigation")
+    </div>
+    <div class="navbar-nav">
+        @await Html.PartialAsync("_RightNavigation")
+        @await Html.PartialAsync("_ExtraNavigation")
     </div>
 </nav>

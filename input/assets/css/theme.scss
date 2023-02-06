@@ -191,65 +191,35 @@ img {
 }
 
 .h-section {
-    background: -webkit-linear-gradient(darken($mixed, 5%), darken($primary, 5%));
+    background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
     color: $white;
     padding: $spacer * 0.5;
     margin-bottom: $spacer / 2;
 }
 
-#collapse-topnav {
-    display: flex;
-    flex-basis: auto;
-    align-items: stretch;
-    flex-wrap: wrap;
-    flex-grow: 1;
-
-    > :first-child {
-        margin-right: auto;
-    }
-}
-
 .nav-link {
     display: block;
-    padding: $nav-link-padding-y 0;
-
-    &,&:hover,&:focus {
-        text-decoration: none;
-    }
-
-    // Disabled state lightens text
-    &.disabled {
-        color: $nav-link-disabled-color;
-        pointer-events: none;
-        cursor: default;
-    }
+    padding: $nav-link-padding-y $nav-link-padding-x;
 }
 
 .navbar {
     position: relative;
     display: flex;
-    flex-wrap: wrap; // allow us to do the line break for collapsing content
-    align-items: center;
+    align-items: start;
     justify-content: space-between; // space out brand from logo
     padding: $navbar-padding-y $navbar-padding-x;
-
-    & .navbar-nav {
-        align-items: stretch;
-    }
-
-    & .nav-item {
-        display: flex;
-        align-items: center;
-    }
 }
 
 .navbar-nav {
     display: flex;
     flex-direction: row;
     margin: 0;
-    list-style: none;
     align-items: stretch;
     gap: $spacer / 2;
+
+    &:first-of-type {
+        flex-grow: 1;
+    }
 }
 
 .navbar-brand {
@@ -264,20 +234,6 @@ img {
 
     &,&:hover,&:focus {
         text-decoration: none;
-    }
-}
-
-.navbar-expand {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-
-    .navbar-nav {
-        flex-direction: row;
-
-        .nav-link {
-            padding-right: $navbar-nav-link-padding-x;
-            padding-left: $navbar-nav-link-padding-x;
-        }
     }
 }
 

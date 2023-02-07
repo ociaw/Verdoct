@@ -1,6 +1,8 @@
 // Variables
 
 $primary:                           #007bff;
+$primary-dark:                      #0056b3;
+$primary-contrast:                  #FFF;
 $mixed:                             darken($primary, 10%) !default;
 
 $primary-bg:                        var(--prim-bg) !default;
@@ -12,17 +14,22 @@ $footer-bg:                         var(--footer-bg) !default;
 $footer-txt:                        var(--footer-txt) !default;
 $pre-color:                         var(--pre-txt) !default;
 $pre-bg-color:                      var(--pre-bg) !default;
+$link-color:                        var(--a) !default;
+$link-hover-color:                  var(--a-hover) !default;
 
 :root {
   --serif: 'Times New Roman', Times, FreeSerif, serif;
   --sans: Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
   --mono: Consolas, FreeMono, FiraMono, UbuntuMono, monospace;
 
+  --prim: #{$primary};
+  --prim-cont: #{$primary-contrast};
+  --prim-dark: #{$primary-dark};
   --bk-wing: 768px;
   --bk-narrow: 384px;
 
-  --prim-bg: #{$primary};
-  --prim-txt: #FFF;
+  --prim-bg: var(--prim);
+  --prim-txt: var(-prim-cont);
   --bg: #F8F9FA;
   --txt: #000;
   --head-bg: #262F60;
@@ -37,6 +44,8 @@ $pre-bg-color:                      var(--pre-bg) !default;
   --pre-bg: #e9ecef; // #FAFAEE;
   --pre-txt: #000;
   --pre-bord: #CCC;
+  --a: var(--prim);
+  --a-hover: var(--prim-dark);
   --tag: #06A;
 
   @media (prefers-color-scheme: dark) {
@@ -81,9 +90,6 @@ $spacer: 1rem !default;
 // Links
 //
 // Style anchor elements.
-
-$link-color:                              $primary !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
 
 // Components
 //

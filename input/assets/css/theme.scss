@@ -232,8 +232,12 @@ img {
     white-space: nowrap;
     color: $primary-bg;
 
-    &,&:hover,&:focus {
+    &:hover {
         text-decoration: none;
+
+        img {
+            filter: brightness(120%);
+        }
     }
 }
 

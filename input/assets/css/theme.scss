@@ -1,5 +1,6 @@
 @import "variables";
 
+/* Broad element styles */
 *, ::before, ::after {
     box-sizing: border-box;
 }
@@ -42,7 +43,7 @@ h4 { font-size: $h4-font-size; }
 h5 { font-size: $h5-font-size; }
 h6 { font-size: $h6-font-size; }
 
-h1, h2, h3 .h-section {
+h1, h2, h3 {
     font-family: var(--serif);
     &:not(:first-child) {
         margin-top: $spacer * 1.5;
@@ -189,6 +190,11 @@ img {
     vertical-align: middle;
 }
 
+small {
+    font-size: 80%;
+    font-weight: normal;
+}
+
 /* Main Layout */
 body {
     > * {
@@ -299,13 +305,6 @@ body {
     }
 }
 
-.h-section {
-    background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
-    color: $white;
-    padding: $spacer * 0.5;
-    margin-bottom: $spacer / 2;
-}
-
 .nav-link {
     display: block;
     padding: $nav-link-padding-y $nav-link-padding-x;
@@ -388,63 +387,37 @@ body {
     }
 }
 
-.list-unstyled {
-    padding-left: 0;
-    list-style: none;
-}
+.breadcrumbs {
+    color: darken($white, 10%);
+    font-size: $h6-font-size;
+    display: flex;
+    flex-flow: row wrap;
 
-small {
-    font-size: 80%;
-    font-weight: normal;
-}
-
-#content {
-    ul:not([class]), ul[class=""] {
-        li {
-            padding-top: $spacer * .25;
-            padding-bottom: $spacer * .25;
-        }
+    span::after {
+        color: darken($white, 20%);
+        content: "/";
+        font-weight: $font-weight-bold;
+        margin-left: $spacer * 0.5;
+        margin-right: $spacer * 0.5;
+        font-size: $font-size-lg;
     }
 
-    &.p-4 > pre[class*="language-"] {
-        margin-left: -$spacer * 1.5;
-        margin-right: -$spacer * 1.5;
-        padding-left: $spacer * 1.5;
-        padding-right: $spacer * 1.5;
+    span:last-child:after {
+        content: '';
+    }
+
+    & a {
+        &, &:focus, &:active, &:hover {
+            color: darken($white, 5%);
+        }
+
+        &:hover {
+            color: darken($white, 10%);
+        }
     }
 }
 
 #titlebar {
-    .breadcrumbs {
-        color: darken($white, 10%);
-        font-size: $h6-font-size;
-        display: flex;
-        flex-flow: row wrap;
-
-        span::after {
-            color: darken($white, 20%);
-            content: "/";
-            font-weight: $font-weight-bold;
-            margin-left: $spacer * 0.5;
-            margin-right: $spacer * 0.5;
-            font-size: $font-size-lg;
-        }
-
-        span:last-child:after {
-            content: '';
-        }
-
-        & a {
-            &, &:focus, &:active, &:hover {
-                color: darken($white, 5%);
-            }
-
-            &:hover {
-                color: darken($white, 10%);
-            }
-        }
-    }
-
     .title {
         line-height: 1.5em;
         font-family: var(--serif);
@@ -453,18 +426,6 @@ small {
         small {
             font-size: 64%;
             color: lighten($primary, 30%);
-        }
-    }
-}
-
-#undertitle {
-    background: $primary-bg linear-gradient(180deg, $primary-bg 30%, darken($primary, 5%) 100%) repeat-x;
-
-    > div {
-        min-height: $spacer * 1.5;
-
-        > .row {
-            min-height: $spacer * 1.5;
         }
     }
 }
@@ -595,6 +556,11 @@ input[type="search"] {
     }
 }
 
+:where(.symbol-context ul, #SeeAlso + ul) {
+    padding-left: 0;
+    list-style: none;
+}
+
 .symbol-summary {
     margin-bottom: 1rem;
     font-size: 1.25rem;
@@ -616,6 +582,14 @@ input[type="search"] {
 
 /* Child Pages */
 .child-pages {
+    > h4 {
+        background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
+        font-family: var(--serif);
+        color: $white;
+        padding: $spacer * 0.5;
+        margin-bottom: $spacer / 2;
+    }
+
     .page-box {
         padding: $spacer / 2;
         margin-bottom: $spacer / 2;

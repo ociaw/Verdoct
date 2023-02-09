@@ -45,7 +45,7 @@
 	        {
     		    <dt>Interfaces</dt>
     		    <dd>
-    			    <ul class="list-unstyled">
+    			    <ul>
     				    @foreach (IDocument interfaceDocument in allInterfaces)
     				    {
     					    <li>@Context.GetTypeLink(interfaceDocument)</li>
@@ -58,7 +58,7 @@
 	        {
     		    <dt>Base Types</dt>
     		    <dd>
-    			    <ul class="list-unstyled">
+    			    <ul>
     				    @foreach (IDocument baseType in baseTypes.Reverse())
     				    {
     					    <li>@Context.GetTypeLink(baseType)</li>
@@ -71,7 +71,7 @@
 	        {
     		    <dt>Derived Types</dt>
     		    <dd>
-    			    <ul class="list-unstyled">
+    			    <ul>
     				    @foreach (IDocument derivedType in derivedTypes)
     				    {
     					    <li>@Context.GetTypeLink(derivedType)</li>
@@ -84,7 +84,7 @@
 	        {
     		    <dt>Implements</dt>
     		    <dd>
-    			    <ul class="list-unstyled">
+    			    <ul>
     				    @foreach (IDocument implementsDocument in implements)
 				        {
 					        IDocument implementsContainingTypeDocument = implementsDocument.GetDocument(CodeAnalysisKeys.ContainingType);
@@ -98,7 +98,7 @@
 	        {
     		    <dt>Implementing Types</dt>
     		    <dd>
-    			    <ul class="list-unstyled">
+    			    <ul>
     				    @foreach (IDocument implementingType in implementingTypes)
     				    {
     					    <li>@Context.GetTypeLink(implementingType)</li>

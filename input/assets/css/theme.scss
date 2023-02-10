@@ -30,8 +30,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
-    margin-bottom: $headings-margin-bottom;
-    font-family: $font-family-sans-serif;
+    margin-bottom: $spacer / 2;
+    font-family: var(--serif);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -127,7 +127,6 @@ pre code {
 
 table {
     width: 100%;
-    margin-bottom: $spacer;
     border-collapse: collapse; // Prevent double borders
     color: $table-color;
     background-color: $table-bg; // Reset for nesting within parents with `background-color`.
@@ -135,19 +134,18 @@ table {
 
 th,
 td {
-    padding: .75rem;
+    padding: .35rem .5rem;
     vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
+    border-top: $border-width solid $border-color;
 }
 
 thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
-    text-align: inherit;
+    border-bottom: (2 * $border-width) solid $border-color;
 }
 
 tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    border-top: (2 * $border-width) solid $border-color;
 }
 
 p {
@@ -365,21 +363,20 @@ body {
     thead {
         th {
             border: none;
-            background: $gray-200 linear-gradient(0deg, $gray-200, $light) repeat-x;
+            background: linear-gradient(0deg, $gray-200, $light) repeat-x;
             font-size: $font-size-sm;
         }
     }
 
     tbody {
-        tr:nth-of-type(#{$table-striped-order}) {
-            background-color: $table-accent-bg;
+        tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05)
         }
         tr:nth-of-type(even) {
             background-color: rgba(0, 0, 0, 0.02);
         }
         tr:hover {
-            color: $table-hover-color;
-            background-color: $table-hover-bg;
+            background-color: rgba(0, 0, 0, .075);
         }
         tr td:not(:first-child) {
             font-size: $font-size-sm;

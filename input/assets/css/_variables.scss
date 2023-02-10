@@ -74,10 +74,7 @@ $link-hover-color:                  var(--a-hover) !default;
 $white:    #fff !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-600: #6c757d !default;
 $gray-700: #495057 !default;
-$gray-900: #212529 !default;
 $black:    #000 !default;
 
 $blue:    #007bff !default;
@@ -125,8 +122,6 @@ $h4-font-size:                $font-size-base * 1.25 !default;
 $h5-font-size:                $font-size-base * 1.15 !default;
 $h6-font-size:                $font-size-base !default;
 
-$headings-margin-bottom:      $spacer / 2 !default;
-
 
 // Tables
 //
@@ -134,22 +129,7 @@ $headings-margin-bottom:      $spacer / 2 !default;
 
 $table-color:                 var(--txt) !default;
 $table-bg:                    null !default;
-$table-accent-bg:             rgba($black, .05) !default;
 $table-hover-color:           $table-color !default;
-$table-hover-bg:              rgba($black, .075) !default;
-$table-active-bg:             $table-hover-bg !default;
-
-$table-border-width:          $border-width !default;
-$table-border-color:          $border-color !default;
-
-$table-head-bg:               $gray-200 !default;
-$table-head-color:            $gray-700 !default;
-
-$table-striped-order:         odd !default;
-
-$table-bg-level:              -9 !default;
-$table-border-level:          -6 !default;
-
 
 // Navs
 

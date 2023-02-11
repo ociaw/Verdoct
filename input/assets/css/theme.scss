@@ -51,20 +51,11 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-weight: bold;
-    color: $primary-bg;
-    background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
     padding-bottom: $spacer * 0.15;
     margin-bottom: $spacer * 0.5;
-}
-
-h1 * {
-    // Need to remove the text-fill from nested elements
-    background-image: none;
-    background-clip: initial;
-    -webkit-text-fill-color: initial;
+    font-weight: bold;
+    color: $primary-bg;
+    filter: brightness(.8);
 }
 
 h2 {
@@ -206,11 +197,16 @@ body {
     }
 
     > header {
-        background: $gray-200 linear-gradient(180deg, $gray-200, $white) repeat-x;
+        padding: $spacer 0 0;
+        background: $header-bg;
+        color: $header-color;
 
-        > div:first-child {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+        a {
+            color: inherit;
+            &:hover:not(.navbar-brand) {
+                color: inherit;
+                background: rgba(0, 0, 0, .2);
+            }
         }
     }
 
@@ -224,7 +220,7 @@ body {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
-        background: linear-gradient(180deg, #007bff 30%, #006fe6 100%) repeat-x;
+        background: linear-gradient($header-bg, $header-bg) repeat-x;
         background-size: auto 1.5rem;
     }
 }
@@ -282,12 +278,19 @@ body {
 }
 
 #titlebar {
-    padding: 1.5rem 0;
     text-align: left;
-    background: $primary-bg linear-gradient(180deg, $mixed, $primary-bg) repeat-x;
-    color: $white;
     overflow-wrap: anywhere;
     word-break: normal;
+
+    .title {
+        line-height: 1.5;
+        font-family: var(--serif);
+        font-size: $h1-font-size;
+    }
+    small {
+        font-size: 64%;
+        opacity: .9;
+    }
 }
 
 #content {
@@ -313,7 +316,6 @@ body {
     display: flex;
     align-items: start;
     justify-content: space-between; // space out brand from logo
-    padding: $navbar-padding-y $navbar-padding-x;
 }
 
 .navbar-nav {
@@ -340,6 +342,7 @@ body {
 
     &:hover {
         text-decoration: none;
+        background-color: unset;
 
         img {
             filter: brightness(120%);
@@ -389,6 +392,7 @@ body {
     font-size: $h6-font-size;
     display: flex;
     flex-flow: row wrap;
+    line-height: 1;
 
     span::after {
         color: darken($white, 20%);
@@ -399,7 +403,7 @@ body {
         font-size: $font-size-lg;
     }
 
-    span:last-child:after {
+    span:last-child::after {
         content: '';
     }
 
@@ -410,19 +414,6 @@ body {
 
         &:hover {
             color: darken($white, 10%);
-        }
-    }
-}
-
-#titlebar {
-    .title {
-        line-height: 1.5em;
-        font-family: var(--serif);
-        font-size: $h1-font-size;
-
-        small {
-            font-size: 64%;
-            color: lighten($primary, 30%);
         }
     }
 }

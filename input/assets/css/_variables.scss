@@ -4,7 +4,7 @@ $font-family-serif:                 'Times New Roman', Times, FreeSerif, serif !
 $font-family-sans-serif:            Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif !default;
 $font-family-monospace:             Consolas, FreeMono, FiraMono, UbuntuMono, monospace !default;
 
-$primary:                           #007bff;
+$primary:                           #3f86c3;
 $primary-dark:                      #0056b3;
 $primary-contrast:                  #FFF;
 $mixed:                             darken($primary, 10%) !default;
@@ -12,7 +12,9 @@ $mixed:                             darken($primary, 10%) !default;
 $primary-bg:                        var(--prim-bg) !default;
 $primary-color:                     var(--prim-txt) !default;
 $bg:                                var(--bg) !default;
-$txt:                               var(--txt) !default;
+$txt:                               var(--txt) !default
+$header-bg:                         var(--head-bg) !default;
+$header-color:                      var(--head-txt) !default;
 $content-bg:                        var(--content-bg) !default;
 $footer-bg:                         var(--footer-bg) !default;
 $footer-txt:                        var(--footer-txt) !default;
@@ -33,10 +35,10 @@ $link-hover-color:                  var(--a-hover) !default;
   --bk-narrow: 384px;
 
   --prim-bg: var(--prim);
-  --prim-txt: var(-prim-cont);
+  --prim-txt: var(--prim-cont);
   --bg: #F8F9FA;
   --txt: #000;
-  --head-bg: #262F60;
+  --head-bg: #3f86c3;
   --head-txt: #FFF;
   --content-bg: #FFF;
   --footer-bg: #212529;
@@ -115,7 +117,7 @@ $font-weight-bolder:          bolder !default;
 
 $line-height-base:            1.75 !default;
 
-$h1-font-size:                $font-size-base * 2 !default;
+$h1-font-size:                $font-size-base * 1.75 !default;
 $h2-font-size:                $font-size-base * 1.5 !default;
 $h3-font-size:                $font-size-base * 1.35 !default;
 $h4-font-size:                $font-size-base * 1.25 !default;

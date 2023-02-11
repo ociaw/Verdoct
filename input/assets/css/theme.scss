@@ -247,70 +247,7 @@ body {
     max-width: 16.666666666666%;
 }
 
-.page-box {
-    border: 1px solid $gray-200;
-    box-shadow: inset 0 1px 0 rgba(#FFF, .15), 0 1px 1px rgba(#000, .075);
-    border-radius: $border-radius;
-
-    *:last-child {
-        margin-bottom: 0;
-    }
-
-    dd {
-        margin-top: 0;
-        padding-top: 0;
-        font-weight: 400;
-    }
-
-    > .sidebar-item > .sidebar-header, dt {
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-}
-
-.sidebar .page-box {
-    background-color: $content-bg;
-    margin-bottom: 1rem;
-}
-
-#content .page-box {
-    background-color: $bg;
-}
-
-#titlebar {
-    text-align: left;
-    overflow-wrap: anywhere;
-    word-break: normal;
-
-    .title {
-        line-height: 1.5;
-        font-family: var(--serif);
-        font-size: $h1-font-size;
-    }
-    small {
-        font-size: 64%;
-        opacity: .9;
-    }
-}
-
-#content {
-    padding: 1.5rem;
-    background-color: var(--content-bg);
-}
-
-#statiq-attribution {
-    font-size: 0.875em;
-    filter: brightness(80%);
-    a {
-        color: inherit;
-    }
-}
-
-.nav-link {
-    display: block;
-    padding: $nav-link-padding-y $nav-link-padding-x;
-}
-
+/* Top Navbar */
 .navbar {
     position: relative;
     display: flex;
@@ -350,8 +287,102 @@ body {
     }
 }
 
+.nav-link {
+    display: block;
+    padding: $nav-link-padding-y $nav-link-padding-x;
+}
+
 #logo {
     height: 2.5rem;
+}
+
+/* Titlebar */
+#titlebar {
+    text-align: left;
+    overflow-wrap: anywhere;
+    word-break: normal;
+
+    .title {
+        line-height: 1.5;
+        font-family: var(--serif);
+        font-size: $h1-font-size;
+    }
+    small {
+        font-size: 64%;
+        opacity: .9;
+    }
+}
+
+.breadcrumbs {
+    color: darken($white, 10%);
+    font-size: $h6-font-size;
+    display: flex;
+    flex-flow: row wrap;
+    line-height: 1;
+
+    span::after {
+        color: darken($white, 20%);
+        content: "/";
+        font-weight: $font-weight-bold;
+        margin-left: $spacer * 0.5;
+        margin-right: $spacer * 0.5;
+        font-size: $font-size-lg;
+    }
+
+    span:last-child::after {
+        content: '';
+    }
+
+    & a {
+        &, &:focus, &:active, &:hover {
+            color: darken($white, 5%);
+        }
+
+        &:hover {
+            color: darken($white, 10%);
+        }
+    }
+}
+
+/* Content */
+#content {
+    padding: 1.5rem;
+    background-color: var(--content-bg);
+
+    .page-box {
+        background-color: $bg;
+    }
+}
+
+/* Footer */
+#statiq-attribution {
+    font-size: 0.875em;
+    filter: brightness(80%);
+    a {
+        color: inherit;
+    }
+}
+
+/* Components */
+.page-box {
+    border: 1px solid $gray-200;
+    box-shadow: inset 0 1px 0 rgba(#FFF, .15), 0 1px 1px rgba(#000, .075);
+    border-radius: $border-radius;
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+
+    dd {
+        margin-top: 0;
+        padding-top: 0;
+        font-weight: 400;
+    }
+
+    > .sidebar-item > .sidebar-header, dt {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
 }
 
 // Ensures tables don't overflow the page
@@ -387,37 +418,6 @@ body {
     }
 }
 
-.breadcrumbs {
-    color: darken($white, 10%);
-    font-size: $h6-font-size;
-    display: flex;
-    flex-flow: row wrap;
-    line-height: 1;
-
-    span::after {
-        color: darken($white, 20%);
-        content: "/";
-        font-weight: $font-weight-bold;
-        margin-left: $spacer * 0.5;
-        margin-right: $spacer * 0.5;
-        font-size: $font-size-lg;
-    }
-
-    span:last-child::after {
-        content: '';
-    }
-
-    & a {
-        &, &:focus, &:active, &:hover {
-            color: darken($white, 5%);
-        }
-
-        &:hover {
-            color: darken($white, 10%);
-        }
-    }
-}
-
 /* Sidebars */
 .sidebar {
     border-bottom: none;
@@ -433,6 +433,11 @@ body {
     position: sticky;
     max-height: 100vh;
     font-size: .875rem;
+
+    .page-box {
+        background-color: $content-bg;
+        margin-bottom: 1rem;
+    }
 }
 
 // sidebar-root elements can be nested to show root-level styling inside a sidebar
@@ -483,9 +488,11 @@ body {
 .edit-link {
     margin-top: $spacer;
     padding-top: $spacer;
-    border-top: $border-width solid $border-color;
     font-size: 0.875em;
     font-weight: 700;
+    :not(:first-child) {
+        border-top: $border-width solid $border-color;
+    }
 }
 
 /* Search */

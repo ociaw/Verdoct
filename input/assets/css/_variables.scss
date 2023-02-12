@@ -1,9 +1,5 @@
 // Variables
 
-$font-family-serif-value:                 'Times New Roman', Times, FreeSerif, serif !default;
-$font-family-sans-serif-value:            Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif !default;
-$font-family-monospace-value:             Consolas, FreeMono, FiraMono, UbuntuMono, monospace !default;
-
 /* The accent color for the site, ex. the header background */
 $accent-value:                      #3f86c3;
 /* The accent color but darkened a bit */
@@ -11,17 +7,12 @@ $accent-dark-value:                 darken($accent-value, 10%);
 /* A color contrasting the accent color, ex. the header text */
 $accent-contrast-value:             #FFF;
 
-$pre-color:                         var(--pre-txt) !default;
-$pre-bg-color:                      var(--pre-bg) !default;
-$link-color:                        var(--a) !default;
-$link-hover-color:                  var(--a-hover) !default;
-
 // We define everything as CSS variables to make it easy to add
 // dark color schemes or user-defined color schemes
 :root {
-  --serif: #{$font-family-serif-value};
-  --sans: #{$font-family-sans-serif-value};
-  --mono: #{$font-family-monospace-value};
+  --serif: 'Times New Roman', Times, FreeSerif, serif;
+  --sans: Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
+  --mono: Consolas, FreeMono, FiraMono, UbuntuMono, monospace;
 
   --bk-wing: 768px;
   --bk-narrow: 384px;
@@ -32,8 +23,8 @@ $link-hover-color:                  var(--a-hover) !default;
 
   --main-bg: #F8F9FA;
   --main-col: #000;
-  --acc-bg: var(--acc);
-  --acc-col: var(--acc-cont);
+  --head-bg: var(--acc);
+  --head-col: var(--acc-cont);
   --content-bg: #FFF;
   --content-col: #000;
   --footer-bg: var(--main-bg);
@@ -41,7 +32,7 @@ $link-hover-color:                  var(--a-hover) !default;
   --border-col: #dee2e6;
 
   --pre-bg: #e9ecef;
-  --pre-txt: #000;
+  --pre-col: #000;
   --pre-bord: #CCC;
   --a: var(--acc);
   --a-hover: var(--acc-dark);
@@ -50,9 +41,34 @@ $link-hover-color:                  var(--a-hover) !default;
   }
 }
 
-// Use body colors for the footer
+// In theme styling we use SASS variables instead of CSS variables in case we want to use special values
+// such as "revert" or "unset"
+// Fonts
+$sans: var(--sans);
+$serif: var(--serif);
+$monospace: var(--mono);
+
+// Accent colors
+$accent-color: var(--acc);
+$accent-dark-color: var(--acc-dark);
+$accent-contrast-color: var(--acc-cont);
+
+// Main layout colors
+$main-bg: var(--main-bg);
+$main-color: var(--main-col);
+$header-bg: var(--head-bg);
+$header-color: var(--head-col);
+$content-bg: var(--content-bg);
+$content-color: var(--content-col);
+$border-color: var(--border-col);
 $footer-bg: var(--footer-bg) !default;
 $footer-color: var(--footer-col) !default;
+
+// Individual elements
+$pre-color:                         var(--pre-col) !default;
+$pre-bg-color:                      var(--pre-bg) !default;
+$link-color:                        var(--a) !default;
+$link-hover-color:                  var(--a-hover) !default;
 
 // Spacing
 //

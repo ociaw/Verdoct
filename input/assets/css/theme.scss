@@ -6,7 +6,7 @@
 }
 
 html {
-    font-family: var(--sans);
+    font-family: $sans;
     line-height: 1.15;
 }
 
@@ -16,22 +16,22 @@ html, body {
 
 body {
     display: flex;
+    flex-direction: column;
     margin: 0;
     min-height: 100vh;
-    flex-direction: column;
-    box-sizing: border-box;
     overflow-x: hidden;
     line-height: 1.75;
     font-size: 1rem;
     font-weight: 400;
-    background-color: var(--main-bg);
     text-align: left;
+    background-color: $main-bg;
+    color: $main-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: $spacer / 2;
-    font-family: var(--serif);
+    font-family: $serif;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -44,8 +44,8 @@ h5 { font-size: 1.15rem; }
 h6 { font-size: 1rem; }
 
 h1, h2, h3 {
-    font-family: var(--serif);
-    color: var(--acc);
+    font-family: $serif;
+    color: $accent-color;
     &:not(:first-child) {
         margin-top: $spacer * 1.5;
     }
@@ -81,7 +81,7 @@ a:not([href]) {
 }
 
 code, pre, samp {
-    font-family: var(--mono);
+    font-family: $monospace;
 }
 
 code {
@@ -121,22 +121,22 @@ th,
 td {
     padding: .35rem .5rem;
     vertical-align: top;
-    border-top: 1px solid var(--border-col);
+    border-top: 1px solid $border-color;
 }
 
 thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid var(--border-col);
+    border-bottom: 2px solid $border-color;
 }
 
 tbody + tbody {
-    border-top: 2px solid var(--border-col);
+    border-top: 2px solid $border-color;
 }
 
 p {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-family: var(--serif);
+    font-family: $serif;
 }
 
 label {
@@ -192,8 +192,8 @@ body {
 
     > header {
         padding: $spacer 0 0;
-        background: var(--acc-bg);
-        color: var(--acc-col);
+        background: $header-bg;
+        color: $header-color;
 
         a {
             color: inherit;
@@ -210,7 +210,7 @@ body {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
-        background: linear-gradient(var(--acc-bg), var(--acc-bg)) repeat-x;
+        background: linear-gradient($header-bg, $header-bg) repeat-x;
         background-size: auto 1.5rem;
     }
 }
@@ -296,7 +296,7 @@ body {
 
     .title {
         line-height: 1.5;
-        font-family: var(--serif);
+        font-family: $serif;
         font-size: 1.75rem;
     }
     small {
@@ -336,11 +336,12 @@ body {
 /* Content */
 #content {
     padding: 1.5rem;
-    background-color: var(--content-bg);
-    color: var(--content-col);
+    background-color: $content-bg;
+    color: $content-color;
 
     .page-box {
-        background-color: var(--main-bg);
+        background-color: $main-bg;
+        color: $main-color;
     }
 }
 
@@ -355,7 +356,7 @@ body {
 
 /* Components */
 .page-box {
-    border: 1px solid var(--border-col);
+    border: 1px solid $border-color;
     box-shadow: inset 0 1px 0 rgba(#FFF, .15), 0 1px 1px rgba(#000, .075);
     border-radius: .25rem;
 
@@ -387,8 +388,8 @@ body {
     thead {
         th {
             border: none;
-            background: var(--acc-bg);
-            color: var(--acc-col);
+            background: $header-bg;
+            color: $header-color;
             font-size: $font-size-sm;
         }
     }
@@ -426,7 +427,8 @@ body {
     font-size: .875rem;
 
     .page-box {
-        background-color: var(--content-bg);
+        background-color: $content-bg;
+        color: $content-color;
         margin-bottom: 1rem;
     }
 }
@@ -443,7 +445,7 @@ body {
         margin-bottom: $spacer * 0.25;
     }
     > .sidebar-children {
-        border-top: 3px solid var(--border-col);
+        border-top: 3px solid $border-color;
     }
 }
 
@@ -461,8 +463,8 @@ body {
 
 .active > :is(.sidebar-header, .sidebar-text) {
     font-weight: 700;
-    color: var(--main-col);
-    background-color: var(--main-bg);
+    background-color: $main-bg;
+    color: $main-color;
     opacity: 1;
 }
 
@@ -480,7 +482,7 @@ body {
     font-size: 0.875em;
     font-weight: 700;
     :not(:first-child) {
-        border-top: 1px solid var(--border-col);
+        border-top: 1px solid $border-color;
     }
 }
 
@@ -566,9 +568,9 @@ input[type="search"] {
 /* Child Pages */
 .child-pages {
     > h4 {
-        background: linear-gradient(var(--acc-dark), var(--acc-bg));
-        font-family: var(--serif);
-        color: var(--acc-col);
+        background: linear-gradient($accent-dark-color, $accent-color);
+        font-family: $serif;
+        color: $accent-contrast-color;
         padding: $spacer * 0.5;
         margin-bottom: $spacer / 2;
     }

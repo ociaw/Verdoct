@@ -59,20 +59,3 @@ $spacer: 1rem !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 $font-size-sm:                .875rem !default;
-
-// Navs
-
-$nav-link-padding-y:                .5rem !default;
-$nav-link-padding-x:                .5rem !default;
-
-
-// Navbar
-
-$navbar-padding-y:                  $spacer / 2 !default;
-$navbar-padding-x:                  $spacer !default;
-
-$navbar-brand-font-size:            1.75rem !default;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   1rem * 1.75 + $nav-link-padding-y * 2 !default;
-$navbar-brand-height:               $navbar-brand-font-size * 1.75 !default;
-$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;

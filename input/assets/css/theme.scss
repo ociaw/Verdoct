@@ -202,8 +202,8 @@ body {
 
     > footer {
         padding: 1.5rem 1rem 1rem;
-        color: var(--footer-col);
-        background-color: var(--footer-bg);
+        background-color: $footer-bg;
+        color: $footer-color;
     }
 
     > main {
@@ -347,7 +347,7 @@ body {
 /* Footer */
 #statiq-attribution {
     font-size: 0.875em;
-    filter: brightness(80%);
+    opacity: .8;
     a {
         color: inherit;
     }

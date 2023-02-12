@@ -16,6 +16,8 @@ $pre-bg-color:                      var(--pre-bg) !default;
 $link-color:                        var(--a) !default;
 $link-hover-color:                  var(--a-hover) !default;
 
+// We define everything as CSS variables to make it easy to add
+// dark color schemes or user-defined color schemes
 :root {
   --serif: #{$font-family-serif-value};
   --sans: #{$font-family-sans-serif-value};
@@ -34,8 +36,8 @@ $link-hover-color:                  var(--a-hover) !default;
   --acc-col: var(--acc-cont);
   --content-bg: #FFF;
   --content-col: #000;
-  --footer-bg: #212529;
-  --footer-col: #dee2e6;
+  --footer-bg: var(--main-bg);
+  --footer-col: var(--main-col);
   --border-col: #dee2e6;
 
   --pre-bg: #e9ecef;
@@ -47,6 +49,10 @@ $link-hover-color:                  var(--a-hover) !default;
   @media (prefers-color-scheme: dark) {
   }
 }
+
+// Use body colors for the footer
+$footer-bg: var(--footer-bg) !default;
+$footer-color: var(--footer-col) !default;
 
 // Spacing
 //

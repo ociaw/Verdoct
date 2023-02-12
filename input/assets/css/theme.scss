@@ -24,7 +24,7 @@ body {
     line-height: 1.75;
     font-size: 1rem;
     font-weight: 400;
-    background-color: var(--bg);
+    background-color: var(--main-bg);
     text-align: left;
 }
 
@@ -45,6 +45,7 @@ h6 { font-size: $h6-font-size; }
 
 h1, h2, h3 {
     font-family: var(--serif);
+    color: var(--acc);
     &:not(:first-child) {
         margin-top: $spacer * 1.5;
     }
@@ -54,16 +55,11 @@ h1 {
     padding-bottom: $spacer * 0.15;
     margin-bottom: $spacer * 0.5;
     font-weight: bold;
-    color: $primary-bg;
     filter: brightness(.8);
 }
 
-h2 {
-    color: darken(mix($gray-200, $primary, 70%), 20%);
-}
-
 h3 {
-    color: darken(mix($gray-200, $primary, 70%), 10%);
+    opacity: .8;
 }
 
 a {
@@ -119,24 +115,22 @@ pre code {
 table {
     width: 100%;
     border-collapse: collapse; // Prevent double borders
-    color: $table-color;
-    background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 }
 
 th,
 td {
     padding: .35rem .5rem;
     vertical-align: top;
-    border-top: $border-width solid $border-color;
+    border-top: 1px solid var(--border-col);
 }
 
 thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $border-width) solid $border-color;
+    border-bottom: 2px solid var(--border-col);
 }
 
 tbody + tbody {
-    border-top: (2 * $border-width) solid $border-color;
+    border-top: 2px solid var(--border-col);
 }
 
 p {
@@ -198,29 +192,25 @@ body {
 
     > header {
         padding: $spacer 0 0;
-        background: $header-bg;
-        color: $header-color;
+        background: var(--acc-bg);
+        color: var(--acc-col);
 
         a {
             color: inherit;
-            &:hover:not(.navbar-brand) {
-                color: inherit;
-                background: rgba(0, 0, 0, .2);
-            }
         }
     }
 
     > footer {
         padding: 1.5rem 1rem 1rem;
-        color: $footer-txt;
-        background-color: $footer-bg;
+        color: var(--footer-col);
+        background-color: var(--footer-bg);
     }
 
     > main {
         display: flex;
         flex-direction: column;
         flex: 1 0 auto;
-        background: linear-gradient($header-bg, $header-bg) repeat-x;
+        background: linear-gradient(var(--acc-bg), var(--acc-bg)) repeat-x;
         background-size: auto 1.5rem;
     }
 }
@@ -265,6 +255,11 @@ body {
     &:first-of-type {
         flex-grow: 1;
     }
+
+    a:hover {
+        color: inherit;
+        background: rgba(0, 0, 0, .2);
+    }
 }
 
 .navbar-brand {
@@ -275,7 +270,6 @@ body {
     font-size: $navbar-brand-font-size;
     line-height: inherit;
     white-space: nowrap;
-    color: $primary-bg;
 
     &:hover {
         text-decoration: none;
@@ -314,32 +308,30 @@ body {
 }
 
 .breadcrumbs {
-    color: darken($white, 10%);
     font-size: $h6-font-size;
     display: flex;
     flex-flow: row wrap;
     line-height: 1;
 
     span::after {
-        color: darken($white, 20%);
-        content: "/";
-        font-weight: $font-weight-bold;
         margin-left: $spacer * 0.5;
         margin-right: $spacer * 0.5;
+        content: "/";
+        font-weight: $font-weight-bold;
         font-size: $font-size-lg;
+        opacity: .6;
     }
 
     span:last-child::after {
         content: '';
     }
 
-    & a {
-        &, &:focus, &:active, &:hover {
-            color: darken($white, 5%);
-        }
+    a {
+        color: inherit;
+        opacity: .9;
 
         &:hover {
-            color: darken($white, 10%);
+            opacity: 1;
         }
     }
 }
@@ -348,9 +340,10 @@ body {
 #content {
     padding: 1.5rem;
     background-color: var(--content-bg);
+    color: var(--content-col);
 
     .page-box {
-        background-color: $bg;
+        background-color: var(--main-bg);
     }
 }
 
@@ -365,9 +358,9 @@ body {
 
 /* Components */
 .page-box {
-    border: 1px solid $gray-200;
+    border: 1px solid var(--border-col);
     box-shadow: inset 0 1px 0 rgba(#FFF, .15), 0 1px 1px rgba(#000, .075);
-    border-radius: $border-radius;
+    border-radius: .25rem;
 
     *:last-child {
         margin-bottom: 0;
@@ -397,7 +390,8 @@ body {
     thead {
         th {
             border: none;
-            background: linear-gradient(0deg, $gray-200, $light) repeat-x;
+            background: var(--acc-bg);
+            color: var(--acc-col);
             font-size: $font-size-sm;
         }
     }
@@ -435,26 +429,24 @@ body {
     font-size: .875rem;
 
     .page-box {
-        background-color: $content-bg;
+        background-color: var(--content-bg);
         margin-bottom: 1rem;
     }
 }
 
 // sidebar-root elements can be nested to show root-level styling inside a sidebar
-.sidebar-root {
-    color: $txt;
-
+.sidebar-root > .sidebar-item {
     // Root-level items
-    > .sidebar-item > *:first-child {
+     > *:first-child {
         font-weight: 700;
         text-transform: uppercase;
         font-size: 0.875em;
     }
-    > .sidebar-item > :is(.sidebar-header, .sidebar-text) {
+    > :is(.sidebar-header, .sidebar-text) {
         margin-bottom: $spacer * 0.25;
     }
-    > .sidebar-item > .sidebar-children {
-        border-top: 3px solid $border-color;
+    > .sidebar-children {
+        border-top: 3px solid var(--border-col);
     }
 }
 
@@ -472,8 +464,8 @@ body {
 
 .active > :is(.sidebar-header, .sidebar-text) {
     font-weight: 700;
-    color: $primary-color;
-    background-color: $primary-bg;
+    color: var(--main-col);
+    background-color: var(--main-bg);
     opacity: 1;
 }
 
@@ -491,7 +483,7 @@ body {
     font-size: 0.875em;
     font-weight: 700;
     :not(:first-child) {
-        border-top: $border-width solid $border-color;
+        border-top: 1px solid var(--border-col);
     }
 }
 
@@ -501,8 +493,7 @@ input[type="search"] {
     padding: .25rem .75rem;
     border: 1px solid #ccc;
     border-radius: .25rem;
-    box-shadow: inset 0 1px 1px rgba($black, .075);
-    color: $gray-700;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
 
 /* Mermaid */
@@ -526,19 +517,19 @@ input[type="search"] {
   .node circle,
   .node ellipse,
   .node polygon {
-    fill: lighten($primary, 50%) !important;
+    fill: lighten($accent-value, 50%) !important;
     stroke: #000 !important;
   }
   .type-node rect,
   .type-node circle,
   .type-node ellipse,
   .type-node polygon {
-    fill: lighten($primary, 30%) !important;
+    fill: lighten($accent-value, 30%) !important;
     stroke: #000 !important;
   }
   .cluster rect {
-    fill: $light !important;
-    stroke: $gray-300 !important;
+    fill: #f8f9fa !important;
+    stroke: #dee2e6 !important;
   }
 }
 
@@ -578,9 +569,9 @@ input[type="search"] {
 /* Child Pages */
 .child-pages {
     > h4 {
-        background: linear-gradient(darken($mixed, 5%), darken($primary, 5%));
+        background: linear-gradient(var(--acc-dark), var(--acc-bg));
         font-family: var(--serif);
-        color: $white;
+        color: var(--acc-col);
         padding: $spacer * 0.5;
         margin-bottom: $spacer / 2;
     }

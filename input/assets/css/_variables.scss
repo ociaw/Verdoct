@@ -1,87 +1,52 @@
 // Variables
 
-$font-family-serif:                 'Times New Roman', Times, FreeSerif, serif !default;
-$font-family-sans-serif:            Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif !default;
-$font-family-monospace:             Consolas, FreeMono, FiraMono, UbuntuMono, monospace !default;
+$font-family-serif-value:                 'Times New Roman', Times, FreeSerif, serif !default;
+$font-family-sans-serif-value:            Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif !default;
+$font-family-monospace-value:             Consolas, FreeMono, FiraMono, UbuntuMono, monospace !default;
 
-$primary:                           #3f86c3;
-$primary-dark:                      #0056b3;
-$primary-contrast:                  #FFF;
-$mixed:                             darken($primary, 10%) !default;
+/* The accent color for the site, ex. the header background */
+$accent-value:                      #3f86c3;
+/* The accent color but darkened a bit */
+$accent-dark-value:                 darken($accent-value, 10%);
+/* A color contrasting the accent color, ex. the header text */
+$accent-contrast-value:             #FFF;
 
-$primary-bg:                        var(--prim-bg) !default;
-$primary-color:                     var(--prim-txt) !default;
-$bg:                                var(--bg) !default;
-$txt:                               var(--txt) !default
-$header-bg:                         var(--head-bg) !default;
-$header-color:                      var(--head-txt) !default;
-$content-bg:                        var(--content-bg) !default;
-$footer-bg:                         var(--footer-bg) !default;
-$footer-txt:                        var(--footer-txt) !default;
 $pre-color:                         var(--pre-txt) !default;
 $pre-bg-color:                      var(--pre-bg) !default;
 $link-color:                        var(--a) !default;
 $link-hover-color:                  var(--a-hover) !default;
 
 :root {
-  --serif: #{$font-family-serif};
-  --sans: #{$font-family-sans-serif};
-  --mono: #{$font-family-monospace};
+  --serif: #{$font-family-serif-value};
+  --sans: #{$font-family-sans-serif-value};
+  --mono: #{$font-family-monospace-value};
 
-  --prim: #{$primary};
-  --prim-cont: #{$primary-contrast};
-  --prim-dark: #{$primary-dark};
   --bk-wing: 768px;
   --bk-narrow: 384px;
 
-  --prim-bg: var(--prim);
-  --prim-txt: var(--prim-cont);
-  --bg: #F8F9FA;
-  --txt: #000;
-  --head-bg: #3f86c3;
-  --head-txt: #FFF;
+  --acc: #{$accent-value};
+  --acc-dark: #{$accent-dark-value};
+  --acc-cont: #{$accent-contrast-value};
+
+  --main-bg: #F8F9FA;
+  --main-col: #000;
+  --acc-bg: var(--acc);
+  --acc-col: var(--acc-cont);
   --content-bg: #FFF;
+  --content-col: #000;
   --footer-bg: #212529;
-  --footer-txt: #dee2e6;
-  --btn-bg: #06A;
-  --btn-txt: #FFF;
-  --btn-bord: transparent;
-  --btn-out: #AAA;
-  --pre-bg: #e9ecef; // #FAFAEE;
+  --footer-col: #dee2e6;
+  --border-col: #dee2e6;
+
+  --pre-bg: #e9ecef;
   --pre-txt: #000;
   --pre-bord: #CCC;
-  --a: var(--prim);
-  --a-hover: var(--prim-dark);
-  --tag: #06A;
+  --a: var(--acc);
+  --a-hover: var(--acc-dark);
 
   @media (prefers-color-scheme: dark) {
-    --bg: #202020;
-    --txt: #D5D5D5;
-    --head-bg: #16163F;
-    --head-txt: #DDD;
-    --btn-bg: #048;
-    --btn-txt: #D5D5D5;
-    --btn-bord: #555;
-    // --btn-out stays the same between dark and light
-    --pre-bg: #292929;
-    --pre-txt: #DDD;
-    --pre-bord: #CCC;
-    --a: #75B9F4;
-    --tag: #09A;
   }
 }
-
-// Color system
-
-$white:    #fff !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-700: #495057 !default;
-$black:    #000 !default;
-
-$blue:    #007bff !default;
-$light:         #f8f9fa !default;
-$dark:          #343a40 !default;
 
 // Spacing
 //
@@ -89,19 +54,6 @@ $dark:          #343a40 !default;
 // variables. Mostly focused on spacing.
 
 $spacer: 1rem !default;
-
-// Links
-//
-// Style anchor elements.
-
-// Components
-//
-// Define common padding and border radius sizes and more.
-
-$border-width:                1px !default;
-$border-color:                $gray-300 !default;
-
-$border-radius:               .25rem !default;
 
 // Typography
 //
@@ -123,15 +75,6 @@ $h3-font-size:                $font-size-base * 1.35 !default;
 $h4-font-size:                $font-size-base * 1.25 !default;
 $h5-font-size:                $font-size-base * 1.15 !default;
 $h6-font-size:                $font-size-base !default;
-
-
-// Tables
-//
-// Customizes the `.table` component with basic values, each used across all table variations.
-
-$table-color:                 var(--txt) !default;
-$table-bg:                    null !default;
-$table-hover-color:           $table-color !default;
 
 // Navs
 

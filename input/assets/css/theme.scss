@@ -610,9 +610,3 @@ input[type="search"] {
         font-size: $font-size-sm;
     }
 }
-
-// We explicity use FreeMono Bold since Normal weight is thin and difficult to read
-@font-face {
-    font-family: "FreeMono";
-    src: local("FreeMono Bold");
-}

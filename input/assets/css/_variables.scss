@@ -2,7 +2,9 @@
 
 /* The accent color for the site, ex. the header background */
 $accent-value:                      #3f86c3;
-/* The accent color but darkened a bit */
+/* The accent color, but lightened */
+$accent-light-value:                #5da4e1;
+/* The accent color, but darkened */
 $accent-dark-value:                 darken($accent-value, 10%);
 /* A color contrasting the accent color, ex. the header text */
 $accent-contrast-value:             #FFF;
@@ -18,26 +20,47 @@ $accent-contrast-value:             #FFF;
   --bk-narrow: 384px;
 
   --acc: #{$accent-value};
+  --acc-light: #{$accent-light-value};
   --acc-dark: #{$accent-dark-value};
   --acc-cont: #{$accent-contrast-value};
 
   --main-bg: #F8F9FA;
   --main-col: #000;
-  --head-bg: var(--acc);
-  --head-col: var(--acc-cont);
   --content-bg: #FFF;
   --content-col: #000;
+  --border-col: #dee2e6;
+
+  --hover-bg: rgba(0, 0, 0, .2);
+
+  --head-bg: var(--acc);
+  --head-col: var(--acc-cont);
   --footer-bg: var(--main-bg);
   --footer-col: var(--main-col);
-  --border-col: #dee2e6;
 
   --pre-bg: #e9ecef;
   --pre-col: #000;
   --pre-bord: #CCC;
   --a: var(--acc);
   --a-hover: var(--acc-dark);
+  --a-hover-bg: rgba(0, 0, 0, .2);
 
   @media (prefers-color-scheme: dark) {
+    --acc-cont: #D5D5D5;
+
+    --main-bg: #202020;
+    --main-col: #D5D5D5;
+    --content-bg: #333;
+    --content-col: #D5D5D5;
+    --border-col: #777;
+
+    --head-bg: #16163F;
+
+    --pre-bg: #292929;
+    --pre-col: #DDD;
+    --pre-bord: #CCC;
+    --a: var(--acc-light);
+    --a-hover: var(--acc);
+    --a-hover-bg: rgba(255, 255, 255, .15);
   }
 }
 

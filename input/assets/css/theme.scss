@@ -412,16 +412,11 @@ body {
 
 /* Sidebars */
 .sidebar {
-    border-bottom: none;
     padding: $spacer $spacer 0;
     margin-top: $spacer * 1.5;
     margin-bottom: 0;
     overflow-y: auto;
     top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: block !important;
     position: sticky;
     max-height: 100vh;
     font-size: .875rem;

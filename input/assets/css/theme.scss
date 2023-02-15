@@ -472,11 +472,11 @@ body {
 
 /* Right Sidebar */
 .edit-link {
-    margin-top: $spacer;
-    padding-top: $spacer;
     font-size: 0.875em;
     font-weight: 700;
-    :not(:first-child) {
+    &:not(:first-child) {
+        margin-top: $spacer;
+        padding-top: $spacer;
         border-top: 1px solid $border-color;
     }
 }

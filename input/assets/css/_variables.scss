@@ -9,6 +9,9 @@ $accent-dark-value:                 darken($accent-value, 10%);
 /* A color contrasting the accent color, ex. the header text */
 $accent-contrast-value:             #FFF;
 
+$breakpoint-wing: 56rem;
+$breakpoint-narrow: 36rem;
+
 // We define everything as CSS variables to make it easy to add
 // dark color schemes or user-defined color schemes
 :root {
@@ -16,8 +19,8 @@ $accent-contrast-value:             #FFF;
   --sans: Arial, Helvetica, FreeSans, 'Liberation Sans', sans-serif;
   --mono: Consolas, NimbusMono, FiraMono, UbuntuMono, monospace;
 
-  --bk-wing: 768px;
-  --bk-narrow: 384px;
+  --bk-wing: #{$breakpoint-wing};
+  --bk-narrow: #{$breakpoint-narrow};
 
   --acc: #{$accent-value};
   --acc-light: #{$accent-light-value};
@@ -41,6 +44,7 @@ $accent-contrast-value:             #FFF;
   --pre-col: #000;
   --pre-bord: #CCC;
   --a: var(--acc);
+  --a-bg: rgba(0, 0, 0, .1);
   --a-hover: var(--acc-dark);
   --a-hover-bg: rgba(0, 0, 0, .2);
 
@@ -59,6 +63,7 @@ $accent-contrast-value:             #FFF;
     --pre-col: #DDD;
     --pre-bord: #CCC;
     --a: var(--acc-light);
+    --a-bg: rgba(255, 255, 255, .075);
     --a-hover: var(--acc);
     --a-hover-bg: rgba(255, 255, 255, .15);
   }

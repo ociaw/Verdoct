@@ -187,11 +187,10 @@ body {
     > header, > footer {
         display: flex;
         flex-direction: column;
-        text-align: center;
     }
 
     > header {
-        padding: $spacer 0 0;
+        padding: $spacer $spacer 0;
         background: $header-bg;
         color: $header-color;
 
@@ -202,6 +201,7 @@ body {
 
     > footer {
         padding: 1.5rem 1rem 1rem;
+        text-align: center;
         background-color: $footer-bg;
         color: $footer-color;
     }
@@ -219,22 +219,41 @@ body {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 15px;
-    display: flex;
-    justify-content: center;
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: minmax(12rem, 1fr) minmax(0, 4fr) minmax(12rem, 1fr);
+    grid-template-areas: "left-wing fuselage right-wing";
+
+    @media(max-width: $breakpoint-wing) {
+        display: flex;
+    }
+
+    @media(max-width: $breakpoint-narrow) {
+        flex-direction: column;
+    }
 }
 
 .fuselage {
-    flex: 0 0 66.666666666666%;
-    max-width: 66.666666666666%;
+    grid-area: fuselage;
     padding-left: 0;
     padding-right: 0;
+    flex: 1;
 }
 
-.wing {
-    flex: 0 0 16.666666666666%;
-    max-width: 16.666666666666%;
+.left-wing {
+    grid-area: left-wing;
+}
+
+.right-wing {
+    grid-area: right-wing;
+
+    @media(max-width: $breakpoint-wing) {
+        display: none;
+    }
+}
+
+.left-wing, .right-wing {
+    margin-top: 2.5rem;
 }
 
 /* Top Navbar */
@@ -243,6 +262,7 @@ body {
     display: flex;
     align-items: start;
     justify-content: space-between; // space out brand from logo
+    flex-wrap: wrap;
 }
 
 .navbar-nav {
@@ -255,10 +275,15 @@ body {
     &:first-of-type {
         flex-grow: 1;
     }
+    
+    a {
+        background: var(--a-bg);
+    }
 
     a:hover {
         color: inherit;
         background: var(--a-hover-bg);
+        text-decoration: none;
     }
 }
 
@@ -290,7 +315,6 @@ body {
 
 /* Titlebar */
 #titlebar {
-    text-align: left;
     overflow-wrap: anywhere;
     word-break: normal;
 
@@ -336,6 +360,7 @@ body {
 /* Content */
 #content {
     padding: 1.5rem;
+    flex: 1;
     background-color: $content-bg;
     color: $content-color;
 
@@ -412,9 +437,7 @@ body {
 
 /* Sidebars */
 .sidebar {
-    padding: $spacer $spacer 0;
-    margin-top: $spacer * 1.5;
-    margin-bottom: 0;
+    margin: $spacer $spacer 0;
     overflow-y: auto;
     top: 0;
     position: sticky;
@@ -458,8 +481,8 @@ body {
 
 .active > :is(.sidebar-header, .sidebar-text) {
     font-weight: 700;
-    background-color: $main-bg;
-    color: $main-color;
+    background-color: $accent-color;
+    color: $accent-contrast-color;
     opacity: 1;
 }
 
@@ -468,6 +491,44 @@ body {
     padding-top: $spacer / 4;
     font-size: .9em;
     font-weight: lighter;
+}
+
+.collapse-toggle {
+    display: none;
+    + label {
+        display: none;
+    }
+
+    @media(max-width: $breakpoint-narrow) {
+        + label {
+            display: block;
+            margin: 0 1rem;
+            padding: .25rem;
+            border: 2px solid $border-color;
+            text-align: center;
+
+            background: $content-bg;
+            color: $content-color;
+
+            &::after {
+                content: "Collapse Navigation";
+            }
+        }
+        &:checked {
+            + label {
+                background: $header-bg;
+                color: $header-color;
+
+                &::after {
+                    content: "Expand Navigation";
+                }
+            }
+
+            ~ nav {
+                display: none;
+            }
+        }
+    }
 }
 
 /* Right Sidebar */

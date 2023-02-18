@@ -130,8 +130,10 @@
             else
             {
                 <div class="hull">
-                    <div class="wing">
-                        <div id="left-sidebar" class="sidebar">
+                    <div class="left-wing">
+                        <input id="left-sidebar-toggle" class="collapse-toggle" type="checkbox" checked />
+                        <label for="left-sidebar-toggle"></label>
+                        <nav id="left-sidebar" class="sidebar">
                             @if (IsSectionDefined(SectionNames.Sidebar))
                             {
                                 @await RenderSectionAsync(SectionNames.Sidebar, false)
@@ -140,7 +142,7 @@
                             {
                                 await Html.RenderPartialAsync("_Sidebar", root);
                             }
-                        </div>
+                        </nav>
                     </div>
                     <div id="content" class="fuselage">
 @* Render the body without indenting in case it contains things like directives *@
@@ -154,8 +156,8 @@
                             await Html.RenderPartialAsync("_ChildPages");
                         }
                     </div>
-                    <div class="wing">
-                        <div id="right-sidebar" class="sidebar">
+                    <div class="right-wing">
+                        <nav id="right-sidebar" class="sidebar">
                             @if (IsSectionDefined(SectionNames.RightSidebar))
                             {
                                 @await RenderSectionAsync(SectionNames.RightSidebar, false)
@@ -164,7 +166,7 @@
                             {
                                 await Html.RenderPartialAsync("_RightSidebar");
                             }
-                        </div>
+                        </nav>
                     </div>
                 </div>
             }

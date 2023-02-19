@@ -1,6 +1,6 @@
 @* The root page of this section is passed in as the model *@
 
-@foreach (IDocument parent in OutputPages.GetAncestorsOf(Document, Document.IdEquals(Model)).Reverse())
+@foreach (IDocument parent in OutputPages.GetAncestorsOf(Document, Document.IdEquals(Model)).Reverse().Skip(1))
 {
     if (!parent.IdEquals(Document))
     {

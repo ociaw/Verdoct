@@ -1,12 +1,12 @@
 // Variables
 
-/* The accent color for the site, ex. the header background */
+// The accent color for the site, ex. the header background
 $accent-value:                      #3f86c3;
-/* The accent color, but lightened */
+// The accent color, but lightened
 $accent-light-value:                #5da4e1;
-/* The accent color, but darkened */
+// The accent color, but darkened
 $accent-dark-value:                 darken($accent-value, 10%);
-/* A color contrasting the accent color, ex. the header text */
+// A color contrasting the accent color, ex. the header text
 $accent-contrast-value:             #FFF;
 
 $breakpoint-wing: 56rem;

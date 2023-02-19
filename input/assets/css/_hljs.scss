@@ -1,0 +1,58 @@
+/* Highlight.js styling */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+
+.hljs-class,
+.hljs-type {
+  color: #2B91AF
+}
+
+.hljs-built_in,
+.hljs-keyword,
+.hljs-literal {
+  color: #0000FF
+}
+
+.hljs-string {
+  color: #A31515;
+}
+
+.hljs-doctag,
+.hljs-meta {
+  color: #808080;
+}
+
+.hljs-comment {
+  color: #008000;
+}
+
+/* Dark Color Scheme */
+@media (prefers-color-scheme: dark)
+{
+  .hljs-class,
+  .hljs-type {
+    color: #40A1BF;
+  }
+
+  .hljs-built_in,
+  .hljs-keyword,
+  .hljs-literal {
+    color: #9DF
+  }
+
+  .hljs-string {
+    color: #F54;
+  }
+
+  .hljs-doctag,
+  .hljs-meta {
+    color: #AAA;
+  }
+
+  .hljs-comment {
+    color: #3A3;
+  }
+}

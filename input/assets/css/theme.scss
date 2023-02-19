@@ -81,6 +81,7 @@ a:not([href]) {
 
 code, pre, samp {
     font-family: $monospace;
+    font-size: .875em;
 }
 
 code {
@@ -99,7 +100,7 @@ pre {
     display: block;
     color: $pre-color;
     background-color: $pre-bg-color;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 }
 
 pre code {
@@ -666,3 +667,5 @@ input[type="search"] {
         font-size: $font-size-sm;
     }
 }
+
+@import "hljs";

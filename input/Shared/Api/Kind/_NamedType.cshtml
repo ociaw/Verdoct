@@ -1,11 +1,11 @@
 @await Html.PartialAsync("Api/Section/_Summary")
 @{
     <div class="type-hierarchy">
-	    <div class="page-box type-diagram">
-		    @await Html.PartialAsync("Api/Section/_TypeDiagram")
-	    </div>
 	    <div class="page-box symbol-context">
 		    @await Html.PartialAsync("Api/Section/_SymbolInfo")
+	    </div>
+	    <div class="page-box type-diagram">
+		    @await Html.PartialAsync("Api/Section/_TypeDiagram")
 	    </div>
     </div>
 }

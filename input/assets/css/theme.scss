@@ -602,14 +602,12 @@ body {
 
 .type-hierarchy {
     position: relative;
-    > .page-box {
-        width: calc(50% - .75rem);
-        height: 100%;
-        min-height: 12.5rem;
-    }
-    > .type-diagram {
-        position: absolute;
-        right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+
+    @media(max-width: $breakpoint-wing) {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -7,8 +7,11 @@
         @await Html.PartialAsync("_SidebarItem", (Model, 0))
     }
     @foreach (IDocument document in OutputPages
-                .GetChildrenOf(Model)
-                .Where(x => !x.ContainsKey(Keys.RedirectTo))
+        .GetChildrenOf(Model)
+        .Where(x => !x.ContainsKey(Keys.RedirectTo))
+        .OrderByDescending(x => x.GetInt("Order"))
+        .ThenByDescending(x => x.GetDateTime(WebKeys.Published))
+        .ThenByDescending(x => x.GetString(Keys.Title))
     )
     {
         @await Html.PartialAsync("_SidebarItem", (document, 2))

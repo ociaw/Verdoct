@@ -1,7 +1,9 @@
 @{
-    IReadOnlyList<IDocument> headings = Document
-        .GetDocumentList(Keys.Headings)
-        ?.Where(x => x.GetInt(Keys.Level) == 1)
+    DocumentList<IDocument> allHeadings = Document
+        .GetDocumentList(Keys.Headings);
+    Int32 topLevel = allHeadings?.DefaultIfEmpty().Min(x => x.GetInt(Keys.Level)) ?? 0;
+    IReadOnlyList<IDocument> headings = allHeadings
+        ?.Where(x => x.GetInt(Keys.Level) == topLevel)
         .ToList();
     string editLink = Document.ContainsKey(SiteKeys.EditLink)
         ? Document.GetString(SiteKeys.EditLink)
@@ -20,9 +22,10 @@
                             <div class="sidebar-header"><a href="#@(heading.GetString(Keys.HeadingId))">@(await heading.GetContentStringAsync())</a></div>
                         </div>
 
+                        var currentLevel = heading.GetInt(Keys.Level);
                         IReadOnlyList<IDocument> childHeadings = heading
                             .GetDocumentList(Keys.Children)
-                            ?.Where(x => x.GetInt(Keys.Level) == 2)
+                            ?.Where(x => x.GetInt(Keys.Level) == currentLevel + 1)
                             .ToList();
                         if (childHeadings?.Count > 0)
                         {

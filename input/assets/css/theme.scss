@@ -313,6 +313,13 @@ body {
     height: 2.5rem;
 }
 
+.nav-search > span {
+    display: inline-block;
+    width: 1rem;
+    mask: url('/assets/img/search.svg') no-repeat 50%;
+    background-color: currentColor;
+}
+
 // Titlebar
 #titlebar {
     overflow-wrap: anywhere;

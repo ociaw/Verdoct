@@ -3,3 +3,5 @@ GatherHeadingsLevel: 3
 SiteTitle: Documentation
 ApiLayout: Api/_ApiLayout
 FontLink: ""
+PostSources: posts/**/*
+IsPost: => Context.Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(Document)

@@ -1,0 +1,20 @@
+@{
+    Layout = "/_Layout.cshtml";
+    DateTime published = Document.GetDateTime("Published");
+    String? category = Document.GetString("Category");
+}
+
+<div class="publish-info">
+    <dl>
+        <dt>Published:</dt>
+        <dd>@published.ToString("yyyy-MM-dd")</dd>
+    </dl>
+</div>
+
+@if (IsSectionDefined(SectionNames.ChildPages))
+{
+    IgnoreSection(SectionNames.ChildPages);
+}
+
+@* Render the body without indenting in case it contains things like directives *@
+@RenderBody()

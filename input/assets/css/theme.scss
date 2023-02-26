@@ -665,4 +665,14 @@ input[type="search"] {
     }
 }
 
+// Posts
+.publish-info {
+    font-size: .875rem;
+
+    dl {
+        display: grid;
+        grid-template-columns: minmax(auto, 10rem) 1fr
+    }
+}
+
 @import "hljs";

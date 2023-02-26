@@ -11,21 +11,21 @@
     @if (containingAssembly is object)
     {
         <div class="sidebar-item">
-            <div class="sidebar-header">Assembly</div>
+            <div class="sidebar-header"><span>Assembly</span></div>
             <div class="sidebar-text">@Context.GetTypeLink(containingAssembly, false)</div>
         </div>
     }
     @if (containingNamespace is object)
     {
         <div class="sidebar-item">
-            <div class="sidebar-header">Namespace</div>
+            <div class="sidebar-header"><span>Namespace</span></div>
             <div class="sidebar-text">@Context.GetTypeLink(containingNamespace, false)</div>
         </div>
     }
     @if (containingType is object)
     {
         <div class="sidebar-item">
-            <div class="sidebar-header">Type</div>
+            <div class="sidebar-header"><span>Type</span></div>
             <div class="sidebar-text">@Context.GetTypeLink(containingType, false)</div>
         </div>
     }

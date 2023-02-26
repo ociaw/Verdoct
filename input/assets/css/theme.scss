@@ -475,7 +475,7 @@ body {
     }
 }
 
-.sidebar-item a {
+.sidebar-item *:where(a, span) {
     padding-left: .5rem;
     display: block;
     color: inherit;

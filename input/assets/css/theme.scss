@@ -469,15 +469,13 @@ body {
 }
 
 .sidebar-item a {
+    padding-left: .5rem;
+    display: block;
     color: inherit;
 }
 
-:where(.sidebar-header, .sidebar-text) {
-    padding-left: $spacer / 2;
-    
-    &:not(:hover):not(:active) {
-        opacity: .7;
-    }
+:where(.sidebar-header, .sidebar-text):not(:hover):not(:active) {
+    opacity: .7;
 }
 
 .active > :is(.sidebar-header, .sidebar-text) {

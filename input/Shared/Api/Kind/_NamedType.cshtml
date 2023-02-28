@@ -1,12 +1,17 @@
 @await Html.PartialAsync("Api/Section/_Summary")
 @{
-    <div class="type-hierarchy">
+    bool hideDiagram = Document.GetBool(SiteKeys.HideTypeDiagrams);
+	string noDiagramClass = hideDiagram ? "no-diagram" : "";
+    <div class="type-hierarchy @noDiagramClass">
 	    <div class="page-box symbol-context">
 		    @await Html.PartialAsync("Api/Section/_SymbolInfo")
 	    </div>
-	    <div class="page-box type-diagram">
-		    @await Html.PartialAsync("Api/Section/_TypeDiagram")
-	    </div>
+		@if (!hideDiagram)
+		{
+		    <div class="page-box type-diagram">
+			    @await Html.PartialAsync("Api/Section/_TypeDiagram")
+		    </div>
+		}
     </div>
 }
 @await Html.PartialAsync("Api/Section/_Syntax")

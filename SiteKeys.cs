@@ -69,5 +69,10 @@
 		/// A Google Fonts (or other) URL for use in a <c>link</c> element in the header.
 		/// </summary>
 		public const string FontLink = nameof(FontLink);
+
+		/// <summary>
+		/// Indicates whether or not type diagrams should be hidden on a Type API page. 
+		/// </summary>
+		public const string HideTypeDiagrams = nameof(HideTypeDiagrams);
     }
 }

@@ -1,4 +1,3 @@
-@model IDocument
 @{
 	String revision = Document.GetString(VcsKeys.RevisionName);
 	IDocument containingRevision = Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))

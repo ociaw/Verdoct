@@ -30,7 +30,14 @@
     {
         <div class="sidebar-item">
             <div class="sidebar-header"><span>Namespace</span></div>
-            <div class="sidebar-text">@Context.GetTypeLink(containingNamespace, false)</div>
+            @if (containingNamespace.GetString(CodeAnalysisKeys.DisplayName) == "global")
+            {
+                <div class="sidebar-text"><span>global</span></div>
+            }
+            else
+            {
+                <div class="sidebar-text">@Context.GetTypeLink(containingNamespace, false))</div>
+            }
         </div>
     }
     @if (containingType is object)

@@ -1,25 +1,35 @@
-# Docable
+# Verdoct
 
-Documentation theme for Statiq Docs.
+Lightweight documentation theme for Statiq Docs supporting API versioning
 
 # Minimum Statiq Docs Version
 
-This theme requires Statiq Docs 1.0.0-beta.2 or later.
+This theme requires Statiq Docs 1.0.0-beta.8 or later.
 
 Using an earlier commit of the theme may allow the use of an earlier version of Statiq Web (look at the theme `themesettings.yml` file to determine the minimum Statiq Docs version for a given version of the theme).
+
+# Optional Dependencies
+
+## [VersionedDocs]()
+This package extends and modifies Statiq.Docs by adding API version support, allowing multiple version of the same code to be documented, e.g. v1.0 and v2.0. 
+
+## [StatiqMermaid](https://github.com/ociaw/StatiqMermaid)
+This package statically generates type diagrams using mermaid-js during build, removing the need for mermaid-js on the client.
+
+Available on [NuGet](https://www.nuget.org/packages/Ociaw.StatiqMermaid/).
 
 # Installation
 
 Statiq themes go in a `theme` folder alongside your `input` folder. If your site is inside a git repository, you can add the theme as a git submodule:
 
 ```
-git submodule add https://github.com/statiqdev/Docable.git theme
+git submodule add https://github.com/ociaw/Verdoct.git theme
 ```
 
 Alternatively you can clone the theme directly:
 
 ```
-git clone https://github.com/statiqdev/Docable.git theme
+git clone https://github.com/ociaw/Verdoct.git theme
 ```
 
 Once inside the `theme` folder, Statiq will automatically recognize the theme. If you want to tweak the theme you can edit files directly in the `theme` folder or copy them to your `input` folder and edit them there.
@@ -33,41 +43,12 @@ These are theme-specific settings and can be set in a settings file (in addition
 - `SiteTitle`: The title of the site. This should be defined regardless of whether `Logo` is because it's used for the page title, alt attributes, etc. 
 - `Logo`: The logo file to use in the navigation bar (include a leading slash if providing a relative path). If not provided, the `SiteTitle` will be used.
 - `EditRoot`: The root link to use for editing pages, usually set to a value like `https://github.com/org/repo/edit/develop/input` (do not use a trailing slash).
+- `HideTypeDiagrams`: Indicates if type diagrams should be displayed for types. If a diagram generator pipeline such as
+[StatiqMermaid](https://github.com/ociaw/StatiqMermaid) isn't in use, this should be enabled.
 
-### Colors
+### Colors, Fonts, and Breakpoints
 
-The following settings control the color scheme of the theme. For any that are not defined, the default Bootstrap values will be used.
-
-- `sass-blue`
-- `sass-indigo`
-- `sass-purple`
-- `sass-pink`
-- `sass-red`
-- `sass-orange`
-- `sass-yellow`
-- `sass-green`
-- `sass-teal`
-- `sass-cyan`
-- `sass-primary`
-- `sass-secondary`
-- `sass-success`
-- `sass-info`
-- `sass-warning`
-- `sass-danger`
-- `sass-light`
-- `sass-dark`
-
-Note that because these variables are injected at the top of the Bootstrap Sass definitions, and their order is undefined, they cannot use other variables in their value and must contain explicit values. If defining as a hex color code from a YAML settings file, you also need to surround the value in quotes since the `#` symbol designates a comment in YAML.
-
-### Fonts
-
-The following settings control the fonts in use by the theme. Note that values here should be enclosed in single quotes, for example `'Roboto Mono'`. You can specify fallback fonts by using commas, for example `'Roboto Mono', monospace`. For any that are not defined, the Roboto family of fonts will be used.
-
-- `sass-font-family-sans-serif`
-- `sass-font-family-serif`
-- `sass-font-family-monospace`
-
-To include a different set of font resources, you can change the setting `FontLink` to a Google Fonts (or other) URL for use in a `<link>` element in the header. Otherwise, you can also include any font resources you want in a `_Head.cshtml` override file in your input directory (in which case you'll likely want to set `FontLink` to an empty string to avoid including the default set of fonts in addition to yours).
+These can be adjusted in `_variables.scss`. By default Verdoct does not use any downloadable fonts to reduce initial download size.
 
 ## Page
 
@@ -82,13 +63,30 @@ These can be set in front matter, a sidecar file, etc. (in addition to any [Stat
 
 Replace or copy any of these Razor partials in your `input` folder to override sections of the site:
 
-TODO
+- `_Head`
+- `_Navigation`
+- `_Breadcrumbs`
+- `_Title`
+- `_Splash`
+- `_Sidebar`
+- `_ChildPages`
+- `_RightSidebar`
+- `_Footer`
+- `_Scripts`
 
 # Sections
 
 In addition to globally changing sections of the site using the partials above you can also add the following Razor sections to any given page to override them for that page (which will typically disable the use of the corresponding partial):
 
-TODO
+- `Head`
+- `Breadcrumbs`
+- `Title`
+- `Subtitle`
+- `Splash`
+- `Sidebar`
+- `ChildPages`
+- `RightSidebar`
+- `Scripts`
 
 # Index Page
 

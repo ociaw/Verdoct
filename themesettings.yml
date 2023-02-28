@@ -1,4 +1,4 @@
-MinimumStatiqDocsVersion-Docable: "1.0.0-beta.2"
+MinimumStatiqDocsVersion-Verdoct: "1.0.0-beta.8"
 GatherHeadingsLevel: 3
 SiteTitle: Documentation
 ApiLayout: Api/_ApiLayout

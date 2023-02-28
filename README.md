@@ -1,6 +1,8 @@
 # Verdoct
 
-Lightweight documentation theme for Statiq Docs supporting API versioning
+Lightweight documentation theme for Statiq Docs supporting API versioning.
+
+This theme is based off of [Docable](https://github.com/statiqdev/Docable), but has been heavily modified.
 
 # Minimum Statiq Docs Version
 

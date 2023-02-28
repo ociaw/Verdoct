@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Statiq.Common;
 using Statiq.Web;
 
-namespace Docable
+namespace Verdoct
 {
     /// <summary>
     /// This model is used for the _DocumentTable partial that renders documents, titles, headers, and summaries as a table.

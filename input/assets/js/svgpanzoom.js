@@ -1,10 +1,10 @@
 if (document.readyState !== 'loading') {
-    setupDocable();
+    setupSvgPanZoom();
 } else {
-    document.addEventListener('DOMContentLoaded', setupDocable);
+    document.addEventListener('DOMContentLoaded', setupSvgPanZoom);
 }
 
-function setupDocable() {
+function setupSvgPanZoom() {
     // Make it scrollable
     let target = document.querySelector(".mermaid svg");
     if (target === null) {

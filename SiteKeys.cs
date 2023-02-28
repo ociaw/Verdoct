@@ -1,4 +1,4 @@
-﻿namespace Docable
+﻿namespace Verdoct
 {
     public static class SiteKeys
     {

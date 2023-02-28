@@ -2,6 +2,7 @@
     <div class="sidebar-header">Assemblies</div>
     <div class="sidebar-children">
         @{
+			String revision = Document.GetString(SiteKeys.RevisionName);
             IReadOnlyList<IDocument> assemblies =
                 Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
                     .Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Assembly")

@@ -1,0 +1,19 @@
+@await Html.PartialAsync("Api/Section/_Summary")
+<h1>Namespaces</h1>
+@{
+	String revision = Document.GetString(VcsKeys.RevisionName);
+    var namespaces = Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
+        .Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Namespace" && x.GetString(VcsKeys.RevisionName) == revision)
+        .OrderBy(x => x.GetString(CodeAnalysisKeys.DisplayName));
+    foreach (IDocument document in namespaces)
+    {
+        <h3>@Context.GetTypeLink(document)</h3>
+        string summary = document.GetString(CodeAnalysisKeys.Summary);
+        if (!summary.IsNullOrWhiteSpace())
+        {
+            <div>
+                @Html.Raw(summary)
+            </div>
+        }
+    }
+}

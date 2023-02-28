@@ -3,9 +3,10 @@
 	<div class="sidebar-header">Namespaces</div>
 	<div class="sidebar-children">
 		@{
+			String revision = Document.GetString(SiteKeys.RevisionName);
 			IList<Tuple<string, IDocument>> namespaces
 				= Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
-					.Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Namespace")
+					.Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Namespace" && x.GetString(VcsKeys.RevisionName) == revision)
 					.Select(x => Tuple.Create(x.GetString(CodeAnalysisKeys.DisplayName), x))
 					.OrderBy(x => x.Item1)
 					.ToList();

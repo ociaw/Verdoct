@@ -74,5 +74,10 @@
 		/// Indicates whether or not type diagrams should be hidden on a Type API page. 
 		/// </summary>
 		public const string HideTypeDiagrams = nameof(HideTypeDiagrams);
+
+		/// <summary>
+		/// The name of a revision (or version) of the code repository.
+		/// </summary>
+		public const string RevisionName = nameof(RevisionName);
     }
 }

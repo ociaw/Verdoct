@@ -1,0 +1,22 @@
+<div class="sidebar-item">
+	<div class="sidebar-header">Versions</div>
+	<div class="sidebar-children">
+	@{
+		String revision = Document.GetString(VcsKeys.RevisionName);
+		IList<(string name, IDocument doc)> revisions = Outputs.FromPipeline(nameof(Statiq.Docs.Pipelines.Api))
+			.Where(x => x.GetString(CodeAnalysisKeys.Kind) == "Revision")
+			.Select(x => (name: x.GetString(SiteKeys.RevisionName), doc: x))
+			.OrderBy(x => x.name)
+			.ToList();
+		foreach ((string name, IDocument doc) rev in revisions)
+		{
+			string activeClass = Document.GetString(VcsKeys.RevisionName) == rev.name
+				? "active"
+				: null;
+            <div class="sidebar-item @activeClass">
+                <div class="sidebar-header">@Context.GetTypeLink(rev.doc, false)</div>
+            </div>
+		}
+	}
+	</div>
+</div>

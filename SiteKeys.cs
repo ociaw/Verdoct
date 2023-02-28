@@ -79,5 +79,15 @@
 		/// The name of a revision (or version) of the code repository.
 		/// </summary>
 		public const string RevisionName = nameof(RevisionName);
+
+		/// <summary>
+		/// The ID of a revision, aka the commit hash.
+		/// </summary>
+		public const string RevisionId = nameof(RevisionId);
+
+		/// <summary>
+		/// The timestamp of the commit date.
+		/// </summary>
+		public const string RevisionTimestamp = nameof(RevisionTimestamp);
     }
 }

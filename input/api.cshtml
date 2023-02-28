@@ -8,19 +8,37 @@ Order: 100
 Xref: api
 ---
 @{
-    string header = "Namespaces";
-    var children = Model.GetChildren();
     var revisions = Model.GetChildren().Where(x => x.GetString("Kind") == "Revision").ToDocumentList();
-    if (revisions.Any())
-    {
-        header = "Versions";
-        children = revisions;
-    }
+    var useRevisions = revisions.Any();
 }
-<h1>@header</h1>
-@foreach (IDocument document in children)
+
+@if (!useRevisions)
 {
-    <h3>@Context.GetTypeLink(document)</h3>
+    <h1>Namespaces</h1>
+    @foreach (IDocument document in Model.GetChildren())
+    {
+        <h2>@Context.GetTypeLink(document)</h2>
+        string summary = document.GetString(CodeAnalysisKeys.Summary);
+        if (!summary.IsNullOrWhiteSpace())
+        {
+            <div>
+                @Html.Raw(summary)
+            </div>
+        }
+    }
+    return;
+}
+
+<h1>Versions</h1>
+@foreach (IDocument document in revisions)
+{
+    <h2>@Context.GetTypeLink(document)</h2>
+    <dl>
+        <dt>Latest Commit Date</dt>
+        <dd>@document.GetDateTimeOffset(nameof(SiteKeys.RevisionTimestamp)).UtcDateTime.ToShortDateString()</dd>
+        <dt>Latest Commit ID</dt>
+        <dd><code>@document.Get(nameof(SiteKeys.RevisionId))</code></dd>
+    </dl>
     string summary = document.GetString(CodeAnalysisKeys.Summary);
     if (!summary.IsNullOrWhiteSpace())
     {

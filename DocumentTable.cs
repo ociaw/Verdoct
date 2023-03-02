@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Statiq.Common;
-using Statiq.Web;
 
 namespace Verdoct
 {

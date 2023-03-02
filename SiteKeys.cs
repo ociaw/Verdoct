@@ -1,5 +1,8 @@
 ﻿namespace Verdoct
 {
+	/// <summary>
+	/// Metadata keys to settings used in this theme.
+	/// </summary>
     public static class SiteKeys
     {
 		/// <summary>
@@ -78,16 +81,19 @@
 		/// <summary>
 		/// The name of a revision (or version) of the code repository.
 		/// </summary>
+		/// <remarks>Readonly. This isn't populated unless using the VersionedDocs package as well.</remarks>
 		public const string RevisionName = nameof(RevisionName);
 
 		/// <summary>
 		/// The ID of a revision, aka the commit hash.
 		/// </summary>
+		/// <remarks>Readonly. This isn't populated unless using the VersionedDocs package as well.</remarks>
 		public const string RevisionId = nameof(RevisionId);
 
 		/// <summary>
 		/// The timestamp of the commit date.
 		/// </summary>
+		/// <remarks>Readonly. This isn't populated unless using the VersionedDocs package as well.</remarks>
 		public const string RevisionTimestamp = nameof(RevisionTimestamp);
     }
 }

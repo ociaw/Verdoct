@@ -316,6 +316,7 @@ body {
 .nav-search > span {
     display: inline-block;
     width: 1rem;
+    -webkit-mask: url('/assets/img/search.svg') no-repeat 50%;
     mask: url('/assets/img/search.svg') no-repeat 50%;
     background-color: currentColor;
 }

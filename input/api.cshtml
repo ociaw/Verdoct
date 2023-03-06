@@ -8,7 +8,10 @@ Order: 100
 Xref: api
 ---
 @{
-    var revisions = Model.GetChildren().Where(x => x.GetString("Kind") == "Revision").ToDocumentList();
+    var revisions = Model.GetChildren()
+        .Where(x => x.GetString("Kind") == "Revision")
+        .OrderByDescending(x => x.GetDateTimeOffset(nameof(SiteKeys.RevisionTimestamp)))
+        .ToDocumentList();
     var useRevisions = revisions.Any();
 }
 
